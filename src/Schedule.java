@@ -12,7 +12,21 @@ public class Schedule {
             }
         }
 
-        schedule.add( apt );
+        // This bit should sort the new appointment into chronological order in the schedule
+        int i = 0;
+        while( apt.getDate().getYear() > schedule.get(i).getDate().getYear() {
+            i++;
+        }
+        while( apt.getDate().getMonth() > schedule.get(i).getDate().getMonth() {
+            i++;
+        }
+        while( apt.getDate().getDay() > schedule.get(i).getDate().getDay() {
+            i++;
+        }
+        while( apt.getTime() > schedule.get(i).getTime {
+            i++;
+        }
+        schedule.add( i, apt );
     }
 
     public void displaySchedule(){
