@@ -7,23 +7,19 @@ public class Schedule {
 
     public void add( Appointment apt ) throws TimeSlotFilledException{
         for ( Appointment a : schedule ) {
-            if( apt.getDate().equals( a.getDate() ) && apt.getTime().equals( a.getTime() ) ){
-                throw new TimeSlotFilledException( apt.getDate(), apt.getTime() );
+            if( apt.getAppointmentDate().equals( a.getAppointmentDate() ) && apt.getAppointmentTime().equals( a.getAppointmentTime() ) ){
+                throw new TimeSlotFilledException( apt.getAppointmentDate(), apt.getAppointmentTime() );
             }
         }
 
         // This bit should sort the new appointment into chronological order in the schedule
         int i = 0;
-        while( apt.getDate().getYear() > schedule.get(i).getDate().getYear() {
+
+        // This assumes that compareTo works for Date objects like I think they do, positive being after the compared date
+        while( apt.getAppointmentDate().compareTo( schedule.get(i).getAppointmentDate() ) > 0 ){
             i++;
         }
-        while( apt.getDate().getMonth() > schedule.get(i).getDate().getMonth() {
-            i++;
-        }
-        while( apt.getDate().getDay() > schedule.get(i).getDate().getDay() {
-            i++;
-        }
-        while( apt.getTime() > schedule.get(i).getTime {
+        while( apt.getAppointmentTime().compareTo( schedule.get(i).getAppointmentTime() ) > 0 ) {
             i++;
         }
         schedule.add( i, apt );

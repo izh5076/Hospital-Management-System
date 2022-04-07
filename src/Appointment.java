@@ -7,7 +7,7 @@ import java.util.Date;
  * Class to  model appointments and stores dates and times
  *
  * @author Issac Heim
- * @author Christopher Brennan
+ * @author Christopher Brennen
  */
 
 public class Appointment
