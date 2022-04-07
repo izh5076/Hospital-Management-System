@@ -145,7 +145,7 @@ public class Appointment
      * @return The date of the appointment
      */
 
-    public Date getDate()
+    public Date getAppointmentDate()
     {
         return this.date;
     }
@@ -154,7 +154,7 @@ public class Appointment
      * Accessor to return the time of the appointment
      * @return the starting time of the appointment
      */
-    public int getTime()
+    public int getAppointmentTime()
     {
         return this.startTime;
     }
