@@ -7,7 +7,7 @@ public class Schedule {
 
     public void add( Appointment apt ) throws TimeSlotFilledException{
         for ( Appointment a : schedule ) {
-            if( apt.getAppointmentDate().equals( a.getAppointmentDate() ) && apt.getAppointmentTime().equals( a.getAppointmentTime() ) ){
+            if( apt.getAppointmentDate().equals( a.getAppointmentDate() ) && ( apt.getAppointmentTime() == a.getAppointmentTime() ) ){
                 throw new TimeSlotFilledException( apt.getAppointmentDate(), apt.getAppointmentTime() );
             }
         }
@@ -19,7 +19,7 @@ public class Schedule {
         while( apt.getAppointmentDate().compareTo( schedule.get(i).getAppointmentDate() ) > 0 ){
             i++;
         }
-        while( apt.getAppointmentTime().compareTo( schedule.get(i).getAppointmentTime() ) > 0 ) {
+        while( apt.getAppointmentTime() > schedule.get(i).getAppointmentTime() ) {
             i++;
         }
         schedule.add( i, apt );
