@@ -1,3 +1,5 @@
+package Time;
+
 import java.util.Date;
 
 public class TimeSlotFilledException extends Exception{

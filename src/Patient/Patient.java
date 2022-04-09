@@ -1,4 +1,8 @@
-import java.util.Random;
+package Patient;
+
+import People.Person;
+import Appointment.*;
+import Insurance.InsuranceHolder;
 
 public class Patient extends Person implements InsuranceHolder
 {

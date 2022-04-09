@@ -1,4 +1,7 @@
+package Patient;
+
 import java.util.ArrayList;
+import Appointment.*;
 
 public class PatientHistory
 {

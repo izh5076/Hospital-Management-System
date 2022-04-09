@@ -1,3 +1,5 @@
+package People;
+
 public abstract class Person
 {
     //instance variables

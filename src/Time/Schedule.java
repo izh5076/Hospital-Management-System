@@ -1,3 +1,7 @@
+package Time;
+
+import Appointment.Appointment;
+
 import java.util.ArrayList;
 
 public class Schedule {
@@ -5,7 +9,7 @@ public class Schedule {
 
     public Schedule(){}
 
-    public void add( Appointment apt ) throws TimeSlotFilledException{
+    public void add( Appointment apt ) throws TimeSlotFilledException {
         for ( Appointment a : schedule ) {
             if( apt.getAppointmentDate().equals( a.getAppointmentDate() ) && ( apt.getAppointmentTime() == a.getAppointmentTime() ) ){
                 throw new TimeSlotFilledException( apt.getAppointmentDate(), apt.getAppointmentTime() );
