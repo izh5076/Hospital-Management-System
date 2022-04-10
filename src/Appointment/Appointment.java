@@ -99,7 +99,7 @@ public class Appointment
     /**
      * Method to set the starting time of the appointment.
      * @param time1 the starting time of the appointment
-     * @throws InvalidDateException
+     * @throws InvalidDateException when the time is outside operating hours of the hospital
      */
     public void setAppointmentTime(int time1) throws InvalidDateException
     {

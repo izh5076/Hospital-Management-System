@@ -1,4 +1,4 @@
-package Insurance;
+package People;
 
 public interface InsuranceHolder {
     public void setInsuranceType( String type );
