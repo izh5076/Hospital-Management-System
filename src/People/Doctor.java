@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Doctor extends Nurse implements InsuranceHolder
 {
-    private String insuranceType;
+    private ArrayList<String> insuranceType;
 
     public Doctor(String name, String gender, int ID, ArrayList<Patient> patients)
     {
@@ -27,13 +27,13 @@ public class Doctor extends Nurse implements InsuranceHolder
     }
 
     @Override
-    public void setInsuranceType(String type)
+    public void setInsuranceType(ArrayList<String> type)
     {
         this.insuranceType = type;
     }
 
     @Override
-    public String getInsuranceType() {
+    public ArrayList<String> getInsuranceType() {
         return this.insuranceType;
     }
 

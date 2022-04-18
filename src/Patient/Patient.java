@@ -4,6 +4,8 @@ import People.Person;
 import Appointment.*;
 import People.InsuranceHolder;
 
+import java.util.ArrayList;
+
 /**
  * Patient.java:
  *
@@ -15,7 +17,7 @@ import People.InsuranceHolder;
 public class Patient extends Person implements InsuranceHolder
 {
     // Instance Variables
-    private String insuranceType;
+    private ArrayList<String> insuranceType;
     private int patientID;
     private PatientHistory chart;
 
@@ -84,7 +86,7 @@ public class Patient extends Person implements InsuranceHolder
      * @param type the Type of insurance that the patient has
      */
     @Override
-    public void setInsuranceType(String type)
+    public void setInsuranceType(ArrayList<String> type)
     {
         this.insuranceType = type;
     }
@@ -94,7 +96,7 @@ public class Patient extends Person implements InsuranceHolder
      * @return The type of insurance that the patient has
      */
     @Override
-    public String getInsuranceType()
+    public ArrayList<String> getInsuranceType()
     {
         return this.insuranceType;
     }
