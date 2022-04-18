@@ -1,0 +1,40 @@
+package People;
+
+import Patient.Patient;
+
+import java.util.ArrayList;
+
+public class Doctor extends Nurse implements InsuranceHolder
+{
+    private String insuranceType;
+
+    public Doctor(String name, String gender, int ID, ArrayList<Patient> patients)
+    {
+        super(name, gender, ID, patients);
+    }
+
+    public void addPatientMed(int patientID, String medicine)
+    {
+
+        for(int i = 0; i < this.patients.size(); i++)
+        {
+            if(patients.get(i).getPatientID() == patientID)
+            {
+                patients.get(i).addMed(medicine);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void setInsuranceType(String type)
+    {
+        this.insuranceType = type;
+    }
+
+    @Override
+    public String getInsuranceType() {
+        return this.insuranceType;
+    }
+
+}

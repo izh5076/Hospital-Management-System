@@ -18,7 +18,7 @@ public class Nurse extends Person
     //instance variables
 
     //A list of patients that the nurse is responsible for
-    private ArrayList<Patient> patients;
+    protected ArrayList<Patient> patients;
 
     //The ID of the Nurse to be recognized by the program
     private int employeeID;

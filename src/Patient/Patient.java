@@ -73,6 +73,11 @@ public class Patient extends Person implements InsuranceHolder
         this.chart.addAppointment(a);
     }
 
+    public int getPatientID()
+    {
+        return patientID;
+    }
+
     /**
      * Method from the InsuranceHolder interface that sets the type of insurance that the patient has
      *
