@@ -1,4 +1,4 @@
-package Patient;
+package People.Patient;
 
 import java.util.ArrayList;
 import Appointment.*;
@@ -62,7 +62,7 @@ public class PatientHistory
     /**
      * An accessor to get the ArrayList of appointments of the patient
      *
-     * @return The ArrayList of Patient appointments
+     * @return The ArrayList of People.Patient appointments
      */
     public ArrayList<Appointment> getAppointments()
     {

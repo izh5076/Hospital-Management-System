@@ -1,6 +1,6 @@
 package People;
 
-import Patient.*;
+import People.Patient.*;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package Patient;
+package People.Patient;
 
 import People.Person;
 import Appointment.*;
@@ -7,7 +7,7 @@ import People.InsuranceHolder;
 import java.util.ArrayList;
 
 /**
- * Patient.java:
+ * People.Patient.java:
  *
  * Class that models a patient in a hospital
  *
@@ -26,7 +26,7 @@ public class Patient extends Person implements InsuranceHolder
      *
      * @param name The name of the patient
      * @param gender The gender of the patient
-     * @param ID The ID of the Patient
+     * @param ID The ID of the People.Patient
      */
     public Patient(String name, String gender, int ID)
     {
