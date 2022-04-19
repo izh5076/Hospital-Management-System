@@ -6,6 +6,7 @@
  * @author Issac Heim
  */
 public class Hospital {
+    public
     public static void main(String[] args) {
 
     }
