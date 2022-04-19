@@ -7,7 +7,7 @@ package Appointment;
  * Exception class that is thrown when there is an invalid date entered or used as a parameter
  *
  * @author Issac Heim
- * @author Christopher Brennan
+ * @author Christopher Brennen
  */
 public class InvalidDateException extends Exception
 {

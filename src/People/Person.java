@@ -1,5 +1,12 @@
 package People;
 
+/**
+ * Person.java:
+ * this is an abstract class holding basic information for people
+ *
+ * @author Christopher Brennen
+ * @author Issac Heim
+ */
 public abstract class Person
 {
     //instance variables

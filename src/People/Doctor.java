@@ -4,6 +4,13 @@ import People.Patient.Patient;
 
 import java.util.ArrayList;
 
+/**
+ * Doctor.java:
+ * Doctor is a more specialized Nurse
+ *
+ * @author Issac Heim
+ * @author Christopher Brennen
+ */
 public class Doctor extends Nurse implements InsuranceHolder
 {
     private ArrayList<String> insuranceType;

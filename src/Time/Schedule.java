@@ -4,11 +4,24 @@ import Appointment.Appointment;
 
 import java.util.ArrayList;
 
+/**
+ * Schedule.java:
+ * this is a schedule object, basically an arraylist of appoitnments with some logic
+ *
+ * @author Christopher Brennen
+ * @author Issac Heim
+ */
 public class Schedule {
     ArrayList<Appointment> schedule = new ArrayList<Appointment>();
 
     public Schedule(){}
 
+    /**
+     * simply adds an appointment to the schedule, checks if the slot is clear
+     *
+     * @param apt
+     * @throws TimeSlotFilledException
+     */
     public void add( Appointment apt ) throws TimeSlotFilledException {
         for ( Appointment a : schedule ) {
             if( apt.getAppointmentDate().equals( a.getAppointmentDate() ) && ( apt.getAppointmentTime() == a.getAppointmentTime() ) ){
@@ -29,6 +42,9 @@ public class Schedule {
         schedule.add( i, apt );
     }
 
+    /**
+     * prints the schedule to output stream
+     */
     public void displaySchedule(){
         System.out.println("The schedule is as follows:");
         for (Appointment a : schedule) {

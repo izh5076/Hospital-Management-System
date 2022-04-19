@@ -11,7 +11,7 @@ import Time.Schedule;
  * appointments.
  *
  * @author Issac Heim
- * @author Christopher Brennan
+ * @author Christopher Brennen
  */
 public class PatientHistory
 {

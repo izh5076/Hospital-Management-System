@@ -2,6 +2,13 @@ package Time;
 
 import java.util.Date;
 
+/**
+ * TimeSlotFilledException.java:
+ * an exception for when the time is already booked
+ *
+ * @author Christopher Brennen
+ * @author Issac Heim
+ */
 public class TimeSlotFilledException extends Exception{
     Date date;
     int time;

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * etc.
  *
  * @author Issac Heim
- * @author Christopher Brennan
+ * @author Christopher Brennen
  */
 public class Nurse extends Person
 {

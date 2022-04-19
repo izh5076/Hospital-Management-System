@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Class that models a patient in a hospital
  *
  * @author Issac Heim
- * @author Christopher Brennan
+ * @author Christopher Brennen
  */
 public class Patient extends Person implements InsuranceHolder
 {
