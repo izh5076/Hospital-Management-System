@@ -20,20 +20,34 @@ public class Hospital {
     private ArrayList<Doctor> doctors;
     private static int id = 0;
 
+    /**
+     * runs through setting up all initial info
+     */
     public static void setupInitialInfo(){
         Scanner input = new Scanner( System.in );
         System.out.println();
     }
+
+    /**
+     * will save all info to storage
+     */
+    public static void saveState(){
+
+    }
+
+    /**
+     * will initialize all fields with data from memory
+     */
     public static void setupFromMemory(){
 
     }
-    public static void getInfo(){
 
-    }
-    public static void setInfo(){
-
-    }
-    public static Patient setPatient(){
+    /**
+     * Makes up a new Patient object
+     *
+     * @return the new Patient object
+     */
+    public static Patient makePatient(){
         Scanner input = new Scanner( System.in );
         System.out.println("Enter patient name: ");
         String name = input.nextLine();
@@ -46,7 +60,13 @@ public class Hospital {
         Patient patient = new Patient(name, gender, id);
         return patient;
     }
-    public static Doctor setDoctor(){
+
+    /**
+     * goes through making a Doctor object
+     *
+     * @return the new Doctor object
+     */
+    public static Doctor makeDoctor(){
         Scanner input = new Scanner( System.in );
         System.out.println("Enter Doctor name: ");
         String name = input.nextLine();
@@ -73,6 +93,50 @@ public class Hospital {
         return doctor;
     }
 
+    /**
+     * runs through the steps of making a Nurse object
+     *
+     * @return a Nurse object
+     */
+    public static Nurse makeNurse(){
+        Scanner input = new Scanner( System.in );
+        System.out.println("Enter Nurse name: ");
+        String name = input.nextLine();
+        System.out.println("Enter Nurse gender, (m)ale, (f)emale, (o)ther");
+        String gender = input.nextLine();
+
+        int id = Hospital.id;
+        Hospital.id++;
+
+        return new Nurse(name, gender, id);
+    }
+
+    /**
+     * will get details for and add appointment to schedule
+     */
+    public static void addAppointment(){
+
+    }
+
+    /**
+     * get and show schedule information
+     */
+    public static void showSchedule(){
+
+    }
+
+    /**
+     * chooses the patient and shows the information
+     */
+    public static void getPatientHistory(){
+
+    }
+
+    /**
+     * Main will handle branching to method-encapsulated logic
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // Setup initial information
         boolean firstRun = true;
@@ -84,6 +148,25 @@ public class Hospital {
 
         // Break into action options
         Scanner input = new Scanner( System.in );
+        String choice;
+        while(true){
+            System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit");
+            choice = input.nextLine();
+            if(choice.equalsIgnoreCase("a")){
+                makePatient();
+            }else if( choice.equalsIgnoreCase("s")){
+                addAppointment();
+            }else if( choice.equalsIgnoreCase("g")){
+                showSchedule();
+            }else if( choice.equalsIgnoreCase("h")){
+                getPatientHistory();
+            }else if( choice.equalsIgnoreCase("q")){
+                saveState();
+                break;
+            }else{
+                System.out.println("Invalid input, restart");
+            }
+        }
 
     }
 }
