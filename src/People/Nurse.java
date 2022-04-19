@@ -28,12 +28,12 @@ public class Nurse extends Person
      *
      * @param name The name of the nurse
      * @param gender The gender of the nurse
-     * @param ID The employee ID of the nurse
+     * @param id The employee ID of the nurse
      */
-    public Nurse(String name, String gender, int ID)
+    public Nurse(String name, String gender, int id)
     {
         super(name, gender);
-        this.employeeID = ID;
+        this.employeeID = id;
     }
 
     /**

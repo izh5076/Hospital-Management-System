@@ -10,9 +10,8 @@ package People;
 public abstract class Person
 {
     //instance variables
-    private String name;
-    private String gender;
-
+    protected String name;
+    protected String gender;
 
     public Person()
     {

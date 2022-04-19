@@ -14,15 +14,16 @@ import java.util.ArrayList;
 public class Doctor extends Nurse implements InsuranceHolder
 {
     private ArrayList<String> insuranceType;
+    private ArrayList<Patient> patients;
 
-    public Doctor(String name, String gender, int ID, ArrayList<Patient> patients)
+    public Doctor(String name, String gender, int id, ArrayList<String> insuranceType)
     {
-        super(name, gender, ID, patients);
+        super(name, gender, id);
+        this.insuranceType = insuranceType;
     }
 
     public void addPatientMed(int patientID, String medicine)
     {
-
         for(int i = 0; i < this.patients.size(); i++)
         {
             if(patients.get(i).getPatientID() == patientID)
@@ -31,6 +32,10 @@ public class Doctor extends Nurse implements InsuranceHolder
                 break;
             }
         }
+    }
+
+    public void addPatient(Patient patient){
+        this.patients.add(patient);
     }
 
     @Override
