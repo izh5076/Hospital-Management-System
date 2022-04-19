@@ -2,6 +2,7 @@ package People.Patient;
 
 import java.util.ArrayList;
 import Appointment.*;
+import Time.Schedule;
 
 /**
  * PatientHistory.java:
