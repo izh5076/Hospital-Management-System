@@ -1,4 +1,4 @@
-package Appointment;
+package Time.Appointment;
 
 
 /**

@@ -1,7 +1,7 @@
 package People.Patient;
 
 import People.Person;
-import Appointment.*;
+import Time.Appointment.*;
 import People.InsuranceHolder;
 
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class Patient extends Person implements InsuranceHolder
     /**
      * A mutator to add an appointment to the patients chart
      *
-     * @param a The Appointment object to be added to the patients chart
+     * @param a The Time.Appointment object to be added to the patients chart
      */
     public void addAppointment(Appointment a)
     {

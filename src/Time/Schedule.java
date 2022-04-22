@@ -1,6 +1,6 @@
 package Time;
 
-import Appointment.Appointment;
+import Time.Appointment.Appointment;
 
 import java.util.ArrayList;
 

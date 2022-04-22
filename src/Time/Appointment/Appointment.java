@@ -1,10 +1,10 @@
-package Appointment;
+package Time.Appointment;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 /**
- * Appointment.Appointment.java:
+ * Time.Appointment.Time.Appointment.java:
  *
  * Class to  model appointments and stores dates and times
  *
