@@ -23,23 +23,8 @@ public class Hospital {
     /**
      * runs through setting up all initial info
      */
-    public static void setupInitialInfo(){
-        Scanner input = new Scanner( System.in );
+    public static void setupInitialInfo(Scanner input){
         System.out.println();
-    }
-
-    /**
-     * will save all info to storage
-     */
-    public static void saveState(){
-
-    }
-
-    /**
-     * will initialize all fields with data from memory
-     */
-    public static void setupFromMemory(){
-
     }
 
     /**
@@ -182,29 +167,62 @@ public class Hospital {
      * @param args
      */
     public static void main(String[] args) {
-        // Setup initial information
-        boolean firstRun = true;
-        if(firstRun){
-            setupInitialInfo();
-        }else{
-            setupFromMemory();
+        Scanner input = new Scanner( System.in );
+        boolean resume;
+        while(true){
+            System.out.println("Do you want to resume where you left off, if you ran this before? 'y' for yes, 'n' for no or haven't run before.");
+            if(input.nextLine().equalsIgnoreCase("y")){
+                resume = true;
+                break;
+            }else if (input.nextLine().equalsIgnoreCase("n")){
+                resume = false;
+                break;
+            }else{
+                System.out.println("Bad entry.");
+            }
         }
 
+        // Opens save file, will copy inputs to be entered upon reloading
+        File save = new File();
+
+        // if you want to resume, it changes source to save file
+        if(resume){
+            input = new Scanner("save.txt");
+        }
+
+        boolean firstRun = true;
+
         // Break into action options
-        Scanner input = new Scanner( System.in );
+        input = new Scanner( System.in );
         String choice;
         while(true){
+            if(resume){
+                if(firstRun){
+                    setupInitialInfo(input);
+                    firstRun = false;
+                }
+                if(input.hasNext() == false){
+                    input = new Scanner( System.in );
+                    resume = false;
+                }
+            }
             System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit");
             choice = input.nextLine();
             if(choice.equalsIgnoreCase("a")){
+                save.println(choice);
                 makePatient();
             }else if( choice.equalsIgnoreCase("s")){
+                save.println(choice);
                 addAppointment();
             }else if( choice.equalsIgnoreCase("g")){
+                save.println(choice);
                 showSchedule();
             }else if( choice.equalsIgnoreCase("h")){
+                save.println(choice);
                 getPatientHistory();
             }else if( choice.equalsIgnoreCase("q")){
+
+                save.println(choice);
                 saveState();
                 break;
             }else{
