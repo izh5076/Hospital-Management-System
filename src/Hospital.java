@@ -14,10 +14,10 @@ import java.util.Scanner;
  * @author Issac Heim
  */
 public class Hospital {
-    private Schedule schedule;
-    private ArrayList<Patient> patients;
-    private ArrayList<Nurse> nurses;
-    private ArrayList<Doctor> doctors;
+    private static Schedule schedule;
+    private static ArrayList<Patient> patients;
+    private static ArrayList<Nurse> nurses;
+    private static ArrayList<Doctor> doctors;
     private static int id = 0;
 
     /**
@@ -114,22 +114,66 @@ public class Hospital {
     /**
      * will get details for and add appointment to schedule
      */
-    public static void addAppointment(){
+    public static void addAppointment()
+    {
+        Scanner scan = new Scanner(System.in);
 
+        System.out.println();
     }
 
     /**
      * get and show schedule information
      */
-    public static void showSchedule(){
-
+    public static void showSchedule()
+    {
+        schedule.displaySchedule();
     }
 
     /**
      * chooses the patient and shows the information
      */
-    public static void getPatientHistory(){
+    public static void getPatientHistory()
+    {
+        boolean found = true;
+        Scanner scan = new Scanner(System.in);
+        int patientID;
 
+
+        System.out.println("Enter patient ID to get the patient history: ");
+        patientID = scan.nextInt();
+
+        for (int i = 0; i < patients.size(); i++)
+        {
+            if(patientID == patients.get(i).getPatientID())
+            {
+                System.out.println(patients.get(i).getName() + "'s Appointments are as followed: ");
+                for(int x = 0; x < patients.get(i).getChart().getAppointments().size(); x++)
+                {
+                    System.out.println("Appointment Time:" + patients.get(i).getChart().getAppointment(x).
+                            getAppointmentTime() + " Appointment date: " + patients.get(i).getChart().getAppointment(x).
+                        getAppointmentDate().toString() + " ");
+                }
+
+                System.out.println(patients.get(i).getName() + "'s illnesses are as followed");
+                for (int j = 0; j < patients.get(i).getChart().getIllnesses().size(); j++)
+                {
+                    System.out.println(patients.get(i).getChart().getIllness(j) + " ");
+                }
+
+                System.out.println(patients.get(i).getName() + "'s medicines are as follows: ");
+                for (int j = 0; j < patients.get(i).getChart().getMedicine().size(); j++)
+                {
+                    System.out.println(patients.get(i).getChart().getIllness(j) + " ");
+                }
+                found = true;
+                break;
+            }
+            found = false;
+        }
+        if(!found)
+        {
+            System.out.println("Patient not found! ");
+        }
     }
 
     /**

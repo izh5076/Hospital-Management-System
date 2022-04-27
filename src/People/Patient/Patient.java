@@ -75,6 +75,17 @@ public class Patient extends Person implements InsuranceHolder
         this.chart.addAppointment(a);
     }
 
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public PatientHistory getChart()
+    {
+        return this.chart;
+    }
+
+
     public int getPatientID()
     {
         return patientID;

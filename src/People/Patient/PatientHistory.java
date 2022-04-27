@@ -69,6 +69,11 @@ public class PatientHistory
         return this.appointments;
     }
 
+    public Appointment getAppointment(int i)
+    {
+        return appointments.get(i);
+    }
+
     /**
      * An accessor to get the illnesses of the patient
      *
@@ -79,6 +84,11 @@ public class PatientHistory
         return this.illnesses;
     }
 
+    public String getIllness(int i)
+    {
+        return this.illnesses.get(i);
+    }
+
     /**
      * An accessor to get the medicines of the patient
      *
@@ -87,5 +97,10 @@ public class PatientHistory
     public ArrayList<String> getMedicine()
     {
         return this.medicine;
+    }
+
+    public String getMedicine(int i)
+    {
+        return this.medicine.get(i);
     }
 }
