@@ -1,7 +1,10 @@
 import People.Doctor;
 import People.Nurse;
 import People.Patient.Patient;
+import Time.Appointment.Appointment;
+import Time.Appointment.InvalidDateException;
 import Time.Schedule;
+import Time.TimeSlotFilledException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -103,7 +106,37 @@ public class Hospital {
     {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println();
+        int startTime;
+        int day;
+        int month;
+        int year;
+        Appointment a;
+
+        System.out.println("Input the day of your appointment: ");
+        day = scan.nextInt();
+
+        System.out.println("Input the month of your appointment: ");
+        month = scan.nextInt();
+
+        System.out.println("Input the year of your appointment: ");
+        year = scan.nextInt();
+
+        System.out.println("What time would you like your appointment to be? ");
+        startTime = scan.nextInt();
+
+        try
+        {
+            a = new Appointment(day, month, year, startTime);
+            schedule.add(a);
+        }
+        catch (InvalidDateException e)
+        {
+            System.err.println(e);
+        }
+        catch (TimeSlotFilledException e)
+        {
+            System.err.println(e);
+        }
     }
 
     /**
