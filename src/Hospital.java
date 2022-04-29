@@ -130,37 +130,58 @@ public class Hospital {
     {
         Scanner scan = new Scanner(System.in);
 
+        Scanner in = new Scanner( System.in );
+        System.out.println("Choose the patient you are scheduling an appointment for (enter number)");
+        for (int i = 0; i < patients.size(); i++) {
+            System.out.println(i + ": " + patients.get(i).getName());
+        }
+        int p;
+        Patient schedulingPatient;
+        while(true){
+            p = in.nextInt();
+            if((p < 0) || (p > patients.size()-1) ){
+                System.out.println("Bad entry, try again.");
+            }
+            else{
+                schedulingPatient = patients.get(p);
+                break;
+            }
+        }
+
         int startTime;
         int day;
         int month;
         int year;
         Appointment a;
+        while(true){
+            System.out.println("Input the day of your appointment: ");
+            day = scan.nextInt();
 
-        System.out.println("Input the day of your appointment: ");
-        day = scan.nextInt();
+            System.out.println("Input the month of your appointment: ");
+            month = scan.nextInt();
 
-        System.out.println("Input the month of your appointment: ");
-        month = scan.nextInt();
+            System.out.println("Input the year of your appointment: ");
+            year = scan.nextInt();
 
-        System.out.println("Input the year of your appointment: ");
-        year = scan.nextInt();
+            System.out.println("What time would you like your appointment to be? ");
+            startTime = scan.nextInt();
 
-        System.out.println("What time would you like your appointment to be? ");
-        startTime = scan.nextInt();
-
-        try
-        {
-            a = new Appointment(day, month, year, startTime);
-            schedule.add(a);
+            try
+            {
+                a = new Appointment(day, month, year, startTime, schedulingPatient);
+                schedule.add(a);
+                break;
+            }
+            catch (InvalidDateException e)
+            {
+                System.err.println(e);
+            }
+            catch (TimeSlotFilledException e)
+            {
+                System.err.println(e);
+            }
         }
-        catch (InvalidDateException e)
-        {
-            System.err.println(e);
-        }
-        catch (TimeSlotFilledException e)
-        {
-            System.err.println(e);
-        }
+
     }
 
     /**

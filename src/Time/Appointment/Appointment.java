@@ -1,5 +1,7 @@
 package Time.Appointment;
 
+import People.Patient.Patient;
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class Appointment
     // Instance variables
     private Date date;
     private int startTime;
+    private Patient patient;
     private LocalDate current = LocalDate.now();
 
     //all appointments last 30 minutes, or 0.5 hours.
@@ -60,9 +63,10 @@ public class Appointment
      * @param month the month the appointment is in
      * @param day the day the appointment is on
      * @param time1 the starting time of the appointment
+     * @param patient the patient this appointment is assigned to
      * @throws InvalidDateException when a date or time is out of the range of the hospitals hours.
      */
-    public Appointment(int day, int month, int year, int time1) throws InvalidDateException
+    public Appointment(int day, int month, int year, int time1, Patient patient) throws InvalidDateException
     {
         if(!validateDate(year, month, day))
         {
@@ -76,6 +80,7 @@ public class Appointment
         {
             this.date = new Date(year, month, day);
             this.startTime = time1;
+            this.patient = patient;
         }
     }
 
@@ -161,4 +166,11 @@ public class Appointment
         return this.startTime;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }
