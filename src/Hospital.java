@@ -3,7 +3,7 @@ import People.Nurse;
 import People.Patient.Patient;
 import Time.Schedule;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,13 +19,46 @@ public class Hospital {
     private static ArrayList<Patient> patients;
     private static ArrayList<Nurse> nurses;
     private static ArrayList<Doctor> doctors;
+    private static ArrayList<String> insurances;
     private static int id = 0;
+    private static Scanner input = new Scanner( System.in );
 
     /**
      * runs through setting up all initial info
      */
     public static void setupInitialInfo(Scanner input){
-        System.out.println();
+        input = new Scanner( System.in );
+        System.out.println("add a (d)octor, (n)urse, (i)nsurance, or (q)uit");
+        String choice = input.nextLine();
+        while(true){
+            if(choice.equalsIgnoreCase("d")){
+                makeDoctor();
+            }else if(choice.equalsIgnoreCase("n")){
+                makeNurse();
+            }else if(choice.equalsIgnoreCase("i")){
+                makeInsurance();
+            }else if(choice.equalsIgnoreCase("q")){
+                break;
+            }else{
+                System.out.println("Bad entry.");
+            }
+        }
+    }
+
+    /**
+     * checks and adds a new insurance type to the list
+     */
+    public static void makeInsurance(){
+        input = new Scanner( System.in );
+        while(true){
+            System.out.println("Enter name of Insurance.");
+            String choice = input.nextLine();
+            if(choice.isEmpty() == false){
+                insurances.add(choice);
+                System.out.println("You have added Insurance: " + choice);
+                break;
+            }
+        }
     }
 
     /**
@@ -167,7 +200,7 @@ public class Hospital {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner input = new Scanner( System.in );
         boolean resume;
         while(true){
@@ -184,7 +217,8 @@ public class Hospital {
         }
 
         // Opens save file, will copy inputs to be entered upon reloading
-        File save = new File( );
+        BufferedWriter writer = new BufferedWriter( new FileWriter("save.txt"));
+
 
         // if you want to resume, it changes source to save file
         if(resume){
@@ -210,21 +244,22 @@ public class Hospital {
             System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit");
             choice = input.nextLine();
             if(choice.equalsIgnoreCase("a")){
-                save.println(choice);
+                writer.append("\n"+choice);
                 makePatient();
             }else if( choice.equalsIgnoreCase("s")){
-                save.println(choice);
+                writer.append("\n"+choice);
                 addAppointment();
             }else if( choice.equalsIgnoreCase("g")){
-                save.println(choice);
+                writer.append("\n"+choice);
                 showSchedule();
             }else if( choice.equalsIgnoreCase("h")){
-                save.println(choice);
+                writer.append("\n"+choice);
                 getPatientHistory();
             }else if( choice.equalsIgnoreCase("q")){
 
-                save.println(choice);
-                saveState();
+                writer.append("\n"+choice);
+                System.out.println(writer);
+                //saveState();
                 break;
             }else{
                 System.out.println("Invalid input, restart");
