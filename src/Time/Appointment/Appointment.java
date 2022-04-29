@@ -62,7 +62,7 @@ public class Appointment
      * @param time1 the starting time of the appointment
      * @throws InvalidDateException when a date or time is out of the range of the hospitals hours.
      */
-    public Appointment(int year, int month, int day, int time1) throws InvalidDateException
+    public Appointment(int day, int month, int year, int time1) throws InvalidDateException
     {
         if(!validateDate(year, month, day))
         {
