@@ -23,7 +23,6 @@ public class Hospital {
     private static ArrayList<Nurse> nurses;
     private static ArrayList<Doctor> doctors;
     private static ArrayList<String> insurances;
-    private static int id = 0;
     private static Scanner input = new Scanner( System.in );
 
     /**
@@ -76,10 +75,7 @@ public class Hospital {
         System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
 
-        int id = Hospital.id;
-        Hospital.id++;
-
-        Patient patient = new Patient(name, gender, id);
+        Patient patient = new Patient(name, id, gender);
         return patient;
     }
 
@@ -95,9 +91,6 @@ public class Hospital {
         System.out.println("Enter Doctor gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
 
-        int id = Hospital.id;
-        Hospital.id++;
-
         ArrayList<String> insurances = new ArrayList<>();
         System.out.println("Enter the Insurance the doctor takes");
         String insurance = input.nextLine();
@@ -111,7 +104,7 @@ public class Hospital {
             insurances.add(insurance);
         }
 
-        Doctor doctor = new Doctor(name, gender, id, insurances);
+        Doctor doctor = new Doctor(name, gender, insurances);
         return doctor;
     }
 
@@ -127,10 +120,7 @@ public class Hospital {
         System.out.println("Enter Nurse gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
 
-        int id = Hospital.id;
-        Hospital.id++;
-
-        return new Nurse(name, gender, id);
+        return new Nurse(name, gender);
     }
 
     /**
