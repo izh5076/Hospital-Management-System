@@ -75,8 +75,46 @@ public class Hospital {
         System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
 
+        ArrayList<String> insurances = new ArrayList<>();
+        System.out.println("Enter the Insurance the patient has");
+        String insurance = input.nextLine();
+        insurances.add(insurance);
+        while(true){
+            System.out.println("Enter another Insurance option for this patient, if no more, enter \"done\".");
+            insurance = input.nextLine();
+            if( insurance.equalsIgnoreCase("done")){
+                break;
+            }
+            insurances.add(insurance);
+        }
+
+        ArrayList<Doctor> possibleDoctors = new ArrayList<>();
+        int n = 1;
         System.out.println("Choose the patients doctor: ");
-        Patient patient = new Patient(name, gender, );
+
+        for (int i = 0; i < insurances.size(); i++)
+        {
+            for (int j = 0; j < doctors.size(); j++)
+            {
+                if(doctors.get(j).getInsuranceType().contains(insurances.get(i)))
+                {
+                    possibleDoctors.add(doctors.get(j));
+                    System.out.println(n + ". " + doctors.get(j).getName());
+                    n++;
+                }
+            }
+        }
+        int docNum = input.nextInt();
+        Doctor patientDoctor = possibleDoctors.get(docNum - 1);
+
+        System.out.println("Choose the patients nurse");
+        for (int i = 0; i < nurses.size(); i++)
+        {
+            System.out.println(i + 1 + ". " + nurses.get(i).getName());
+        }
+        int nurseNum = input.nextInt();
+        Nurse patientNurse = nurses.get(nurseNum - 1);
+        Patient patient = new Patient(name, gender, patientDoctor, patientNurse, insurances);
         return patient;
     }
 
