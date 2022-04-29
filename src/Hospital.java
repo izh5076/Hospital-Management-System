@@ -209,6 +209,7 @@ public class Hospital {
             {
                 a = new Appointment(day, month, year, startTime, schedulingPatient);
                 schedule.add(a);
+                schedulingPatient.getChart().addAppointment(a);
                 break;
             }
             catch (InvalidDateException e)
@@ -222,7 +223,10 @@ public class Hospital {
         }
 
         System.out.println("You have added an appointment: " + a);
+        System.out.println("Some follow up dates for the next appointment would be: ");
+        for (int i = 0; i < 5; i++) {
 
+        }
     }
 
     /**
