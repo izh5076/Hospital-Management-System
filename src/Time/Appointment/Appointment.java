@@ -24,7 +24,7 @@ public class Appointment
     private LocalDate current = LocalDate.now();
 
     //all appointments last 30 minutes, or 0.5 hours.
-    private final double duration = 0.5;
+    private final String duration = "45 minutes";
 
     //Hospital opening and closing hours
     private final double openingHour = 9.0;
@@ -172,5 +172,15 @@ public class Appointment
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                ", patient=" + patient +
+                "date=" + date +
+                ", startTime=" + startTime +
+                ", duration=" + duration +
+                '}';
     }
 }

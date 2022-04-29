@@ -117,4 +117,12 @@ public class Patient extends Person implements InsuranceHolder
         return this.insuranceType;
     }
 
+    @Override
+    public String toString() {
+        return "Patient{" + this.getName() +
+                "insured by: " + insuranceType +
+                ", assigned Doctor: " + patientDoctor +
+                ", assigned Nurse: " + patientNurse +
+                '}';
+    }
 }

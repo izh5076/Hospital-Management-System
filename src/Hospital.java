@@ -183,6 +183,8 @@ public class Hospital {
             }
         }
 
+        System.out.println("You have added an appointment: " + a);
+
     }
 
     /**
