@@ -16,17 +16,17 @@ public class Doctor extends Nurse implements InsuranceHolder
     private ArrayList<String> insuranceType;
     private ArrayList<Patient> patients;
 
-    public Doctor(String name, String gender, int id, ArrayList<String> insuranceType)
+    public Doctor(String name, String gender, ArrayList<String> insuranceType)
     {
-        super(name, gender, id);
+        super(name, gender);
         this.insuranceType = insuranceType;
     }
 
-    public void addPatientMed(int patientID, String medicine)
+    public void addPatientMed(String name, String medicine)
     {
         for(int i = 0; i < this.patients.size(); i++)
         {
-            if(patients.get(i).getPatientID() == patientID)
+            if(patients.get(i).name == name)
             {
                 patients.get(i).addMed(medicine);
                 break;
@@ -37,6 +37,7 @@ public class Doctor extends Nurse implements InsuranceHolder
     public void addPatient(Patient patient){
         this.patients.add(patient);
     }
+
 
     @Override
     public void setInsuranceType(ArrayList<String> type)

@@ -1,5 +1,7 @@
 package People.Patient;
 
+import People.Doctor;
+import People.Nurse;
 import People.Person;
 import Time.Appointment.*;
 import People.InsuranceHolder;
@@ -18,31 +20,24 @@ public class Patient extends Person implements InsuranceHolder
 {
     // Instance Variables
     private ArrayList<String> insuranceType;
-    private int patientID;
     private PatientHistory chart;
+    private Doctor patientDoctor;
+    private Nurse patientNurse;
+
 
     /**
      * Constructor that takes in the name, gender and ID of the patient.
      *
      * @param name The name of the patient
      * @param gender The gender of the patient
-     * @param ID The ID of the People.Patient
      */
-    public Patient(String name, String gender, int ID)
+    public Patient(String name, String gender, Doctor d, Nurse n, ArrayList<String> insurances)
     {
         super(name, gender);
         this.chart = new PatientHistory();
-        this.setPatientID(ID);
-    }
-
-    /**
-     * Mutator to set the patient ID of the patient
-     *
-     * @param ID The ID number of the patient
-     */
-    public void setPatientID(int ID)
-    {
-        this.patientID = ID;
+        this.setDoctor(d);
+        this.setNurse(n);
+        this.setInsuranceType(insurances);
     }
 
     /**
@@ -66,6 +61,21 @@ public class Patient extends Person implements InsuranceHolder
     }
 
     /**
+     * Setter to set the patients doctor.
+     *
+     * @param d a doctor object representing the doctor that the patient has
+     */
+    public void setDoctor(Doctor d)
+    {
+        this.patientDoctor = d;
+    }
+
+    public void setNurse(Nurse n)
+    {
+        this.patientNurse = n;
+    }
+
+    /**
      * A mutator to add an appointment to the patients chart
      *
      * @param a The Time.Appointment object to be added to the patients chart
@@ -85,11 +95,6 @@ public class Patient extends Person implements InsuranceHolder
         return this.chart;
     }
 
-
-    public int getPatientID()
-    {
-        return patientID;
-    }
 
     /**
      * Method from the InsuranceHolder interface that sets the type of insurance that the patient has
