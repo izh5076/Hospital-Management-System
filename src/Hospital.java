@@ -75,7 +75,8 @@ public class Hospital {
         System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
 
-        Patient patient = new Patient(name, id, gender);
+        System.out.println("Choose the patients doctor: ");
+        Patient patient = new Patient(name, gender, );
         return patient;
     }
 
@@ -199,15 +200,15 @@ public class Hospital {
     {
         boolean found = true;
         Scanner scan = new Scanner(System.in);
-        int patientID;
+        String patientName;
 
 
-        System.out.println("Enter patient ID to get the patient history: ");
-        patientID = scan.nextInt();
+        System.out.println("Enter patient name to get the patient history: ");
+        patientName = scan.nextLine();
 
         for (int i = 0; i < patients.size(); i++)
         {
-            if(patientID == patients.get(i).getPatientID())
+            if(patients.get(i).getName() == patientName)
             {
                 System.out.println(patients.get(i).getName() + "'s Appointments are as followed: ");
                 for(int x = 0; x < patients.get(i).getChart().getAppointments().size(); x++)

@@ -47,8 +47,15 @@ public class Schedule {
      */
     public void displaySchedule(){
         System.out.println("The schedule is as follows:");
-        for (Appointment a : schedule) {
-            System.out.println(a.toString());
+        if(schedule.equals(null))
+        {
+            System.out.println("No current schedule available");
+        }
+        else
+        {
+            for (Appointment a : schedule) {
+                System.out.println(a.toString());
+            }
         }
     }
 }

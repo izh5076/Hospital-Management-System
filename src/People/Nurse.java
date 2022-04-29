@@ -21,19 +21,16 @@ public class Nurse extends Person
     protected ArrayList<Patient> patients;
 
     //The ID of the Nurse to be recognized by the program
-    private int employeeID;
 
     /**
      * Constructor that takes in th name of the nurse, the gender of the nurse, and the new nurses name
      *
      * @param name The name of the nurse
      * @param gender The gender of the nurse
-     * @param id The employee ID of the nurse
      */
-    public Nurse(String name, String gender, int id)
+    public Nurse(String name, String gender)
     {
         super(name, gender);
-        this.employeeID = id;
     }
 
     /**
@@ -41,36 +38,15 @@ public class Nurse extends Person
      *
      * @param name The name of the nurse
      * @param gender The gender of the nurse
-     * @param ID The employee ID of the nurse
      * @param patients The list of nurses patients
      */
-    public Nurse(String name, String gender, int ID, ArrayList<Patient> patients)
+    public Nurse(String name, String gender, ArrayList<Patient> patients)
     {
         super(name, gender);
-        this.employeeID = ID;
         this.patients = new ArrayList<Patient>();
         this.setNewEmployeePatients(patients);
     }
 
-    /**
-     * Mutator to set the ID of the nurse
-     *
-     * @param employeeID The new employee ID of the nurse
-     */
-    public void setEmployeeID(int employeeID)
-    {
-        this.employeeID = employeeID;
-    }
-
-    /**
-     * Accessor to get the employee ID of the nurse
-     *
-     * @return The employee ID of the nurse
-     */
-    public int getEmployeeID()
-    {
-        return employeeID;
-    }
 
     /**
      * A mutator that accesses the ArrayList of the nurses patients and adds a new patient object
@@ -80,6 +56,11 @@ public class Nurse extends Person
     public void addPatient(Patient newPatient)
     {
         this.patients.add(newPatient);
+    }
+
+    public String getName()
+    {
+        return this.name;
     }
 
     /**
