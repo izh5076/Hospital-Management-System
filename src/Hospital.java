@@ -3,6 +3,7 @@ import People.Nurse;
 import People.Patient.Patient;
 import Time.Schedule;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -183,7 +184,7 @@ public class Hospital {
         }
 
         // Opens save file, will copy inputs to be entered upon reloading
-        File save = new File();
+        File save = new File( );
 
         // if you want to resume, it changes source to save file
         if(resume){
