@@ -31,16 +31,20 @@ public class Schedule implements Serializable {
         }
 
         // This bit should sort the new appointment into chronological order in the schedule
-        int i = 0;
-
         // This assumes that compareTo works for Date objects like I think they do, positive being after the compared date
-        while( apt.getAppointmentDate().compareTo( schedule.get(i).getAppointmentDate() ) > 0 ){
-            i++;
+        if(schedule.isEmpty()){
+            schedule.add(apt);
+        }else{
+            int i = 0;
+            while( apt.getAppointmentDate().compareTo( schedule.get(i).getAppointmentDate() ) > 0 ){
+                i++;
+            }
+            while( apt.getAppointmentTime() > schedule.get(i).getAppointmentTime() ) {
+                i++;
+            }
+            schedule.add( i, apt );
         }
-        while( apt.getAppointmentTime() > schedule.get(i).getAppointmentTime() ) {
-            i++;
-        }
-        schedule.add( i, apt );
+
     }
 
     /**

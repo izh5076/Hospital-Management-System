@@ -18,7 +18,7 @@ public class InvalidDateException extends Exception
      */
     public InvalidDateException(int time)
     {
-        super("The time " + time + "is outside of our office's hours");
+        super("The time " + time + " is outside of our office's hours");
     }
 
     /**

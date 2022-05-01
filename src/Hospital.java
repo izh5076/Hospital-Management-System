@@ -33,7 +33,7 @@ public class Hospital {
         Scanner input = new Scanner( System.in );
         while(true)
         {
-            System.out.println("add a (d)octor, (n)urse, (i)nsurance, or (q)uit");
+            System.out.println("add a (d)octor, (n)urse, (i)nsurance, or (f)inished with setup info");
             String choice = input.nextLine();
 
             if(choice.equalsIgnoreCase("d")){
@@ -42,7 +42,7 @@ public class Hospital {
                 makeNurse();
             }else if(choice.equalsIgnoreCase("i")){
                 makeInsurance();
-            }else if(choice.equalsIgnoreCase("q")){
+            }else if(choice.equalsIgnoreCase("f")){
                 break;
             }else{
                 System.out.println("Bad entry.");
@@ -89,7 +89,7 @@ public class Hospital {
 
             ois.close();
 
-            System.out.println("load state has been called and executed");
+            System.out.println("Previous state has been loaded.");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("No save file found, defaulting to set up mode.");
@@ -188,7 +188,7 @@ public class Hospital {
         }else{
             System.out.println("No nurses found, making a new nurse that will be assigned to patient");
             makeNurse();
-            patientNurse = nurses.get(nurses.lastIndexOf(nurses));
+            patientNurse = nurses.get(nurses.size()-1);
         }
 
         Patient patient = new Patient(name, gender, patientDoctor, patientNurse, insurances);
@@ -293,16 +293,16 @@ public class Hospital {
         int year;
         Appointment a;
         while(true){
-            System.out.println("Input the day of your appointment: ");
+            System.out.println("Input the day of your appointment (integer): ");
             day = scan.nextInt();
 
-            System.out.println("Input the month of your appointment: ");
+            System.out.println("Input the month of your appointment (integer): ");
             month = scan.nextInt();
 
-            System.out.println("Input the year of your appointment: ");
+            System.out.println("Input the year of your appointment (integer): ");
             year = scan.nextInt();
 
-            System.out.println("What time would you like your appointment to be? ");
+            System.out.println("What time would you like your appointment to be? Open 9-17, military time. (enter integer).");
             startTime = scan.nextInt();
 
             try
@@ -323,7 +323,7 @@ public class Hospital {
         }
 
         System.out.println("You have added an appointment: " + a);
-        System.out.println("Some follow up dates for the next appointment would be: ");
+        System.out.println("Some follow up dates for the patient's next appointment would be: ");
         for (int i = 0; i < 5; i++) {
 
         }
