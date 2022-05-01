@@ -2,6 +2,7 @@ package Time.Appointment;
 
 import People.Patient.Patient;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -14,7 +15,7 @@ import java.util.Date;
  * @author Christopher Brennen
  */
 
-public class Appointment
+public class Appointment implements Serializable
 {
 
     // Instance variables
