@@ -74,7 +74,13 @@ public class Hospital {
         String name = input.nextLine();
         System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
+        while(!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f") && !gender.equalsIgnoreCase("o"))
+        {
+            System.out.println("Invalid input");
+            System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
+            gender = input.nextLine();
 
+        }
         ArrayList<String> insurances = new ArrayList<>();
         System.out.println("Enter the Insurance the patient has");
         String insurance = input.nextLine();
@@ -86,6 +92,7 @@ public class Hospital {
                 break;
             }
             insurances.add(insurance);
+
         }
 
         ArrayList<Doctor> possibleDoctors = new ArrayList<>();
@@ -115,6 +122,7 @@ public class Hospital {
         int nurseNum = input.nextInt();
         Nurse patientNurse = nurses.get(nurseNum - 1);
         Patient patient = new Patient(name, gender, patientDoctor, patientNurse, insurances);
+        Hospital.patients.add(patient);
         return patient;
     }
 
@@ -262,7 +270,7 @@ public class Hospital {
                         getAppointmentDate().toString() + " ");
                 }
 
-                System.out.println(patients.get(i).getName() + "'s illnesses are as followed");
+                System.out.println(patients.get(i).getName() + "'s illnesses are as followed: ");
                 for (int j = 0; j < patients.get(i).getChart().getIllnesses().size(); j++)
                 {
                     System.out.println(patients.get(i).getChart().getIllness(j) + " ");

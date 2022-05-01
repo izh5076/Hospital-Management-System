@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class Doctor extends Nurse implements InsuranceHolder
 {
     private ArrayList<String> insuranceType;
-    private ArrayList<Patient> patients;
 
     public Doctor(String name, String gender, ArrayList<String> insuranceType)
     {

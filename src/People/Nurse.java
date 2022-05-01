@@ -20,7 +20,7 @@ public class Nurse extends Person
     //A list of patients that the nurse is responsible for
     protected ArrayList<Patient> patients;
 
-    //The ID of the Nurse to be recognized by the program
+
 
     /**
      * Constructor that takes in th name of the nurse, the gender of the nurse, and the new nurses name

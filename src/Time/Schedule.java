@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Schedule.java:
- * this is a schedule object, basically an arraylist of appoitnments with some logic
+ * this is a schedule object, basically an arraylist of appointments with some logic
  *
  * @author Christopher Brennen
  * @author Issac Heim
