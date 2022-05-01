@@ -313,10 +313,11 @@ public class Hospital {
         boolean resume;
         while(true){
             System.out.println("Do you want to resume where you left off, if you ran this before? 'y' for yes, 'n' for no or haven't run before.");
-            if(input.nextLine().equalsIgnoreCase("y")){
+            String s = input.nextLine();
+            if(s.equalsIgnoreCase("y")){
                 resume = true;
                 break;
-            }else if (input.nextLine().equalsIgnoreCase("n")){
+            }else if (s.equalsIgnoreCase("n")){
                 resume = false;
                 break;
             }else{
