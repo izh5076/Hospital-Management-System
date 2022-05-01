@@ -49,4 +49,12 @@ public class Doctor extends Nurse implements InsuranceHolder
         return this.insuranceType;
     }
 
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                " name=" + name +
+                " ;gender=" + gender +
+                " ;insuranceType=" + insuranceType +
+                '}';
+    }
 }

@@ -65,8 +65,6 @@ public class Hospital {
             oos.close();
 
             System.out.println("Data saved");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,13 +89,12 @@ public class Hospital {
 
             ois.close();
 
+            System.out.println("load state has been called and executed");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("No save file found, defaulting to set up mode.");
             setupInitialInfo();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -218,6 +215,8 @@ public class Hospital {
         }
 
         Doctor doctor = new Doctor(name, gender, insurances);
+        System.out.println(doctor);
+        doctors.add(doctor);
     }
 
     /**
@@ -238,6 +237,8 @@ public class Hospital {
             gender = input.nextLine();
         }
         Nurse nurse = new Nurse(name, gender);
+
+        Hospital.nurses.add(nurse);
     }
 
     /**
