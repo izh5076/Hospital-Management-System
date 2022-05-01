@@ -1,5 +1,6 @@
 package People.Patient;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import Time.Appointment.*;
 
@@ -12,7 +13,7 @@ import Time.Appointment.*;
  * @author Issac Heim
  * @author Christopher Brennen
  */
-public class PatientHistory
+public class PatientHistory implements Serializable
 {
     //Instance Variables
     private ArrayList<String> illnesses;
