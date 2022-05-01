@@ -447,9 +447,9 @@ public class Hospital {
         input = new Scanner( System.in );
         String choice;
         while(true){
-            System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit, make new (d)octor, make new (n)urse, add new (i)insurance, (t)ests saved doctors and patients");
+            System.out.println("Would you like to: \nadd a (p)atient, \n(s)chedule an appointment, \n(g)et upcoming schedule, \nget patient (h)istory, \nsave and (q)uit, \nmake new (d)octor, \nmake new (n)urse, \nadd new (i)insurance, \n(t)ests saved doctors and patients");
             choice = input.nextLine();
-            if(choice.equalsIgnoreCase("a")){
+            if(choice.equalsIgnoreCase("p")){
                 makePatient();
             }else if( choice.equalsIgnoreCase("s")){
                 addAppointment();
