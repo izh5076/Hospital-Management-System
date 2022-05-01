@@ -337,6 +337,10 @@ public class Hospital {
         schedule.displaySchedule();
     }
 
+    public static void makePatientHistory(){
+
+    }
+
     /**
      * chooses the patient and shows the information
      */

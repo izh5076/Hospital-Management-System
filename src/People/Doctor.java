@@ -51,10 +51,10 @@ public class Doctor extends Nurse implements InsuranceHolder
 
     @Override
     public String toString() {
-        return "Doctor{" +
-                " name=" + name +
-                " ;gender=" + gender +
-                " ;insuranceType=" + insuranceType +
-                '}';
+        return "Doctor{ " +
+                name +
+                ", " + gender +
+                ", insurance:" + insuranceType +
+                " }";
     }
 }
