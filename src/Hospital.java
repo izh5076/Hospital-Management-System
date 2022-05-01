@@ -175,11 +175,13 @@ public class Hospital {
             int nurseNum = input.nextInt();
             patientNurse = nurses.get(nurseNum - 1);
         }else{
-            System.out.println("No nurses found, defaulting assigned nurse to \"NoNurse\"");
-            patientNurse = new Nurse("none", "o");
+            System.out.println("No nurses found, making a new nurse that will be assigned to patient");
+            makeNurse();
+            patientNurse = nurses.get(nurses.lastIndexOf(nurses));
         }
 
         Patient patient = new Patient(name, gender, patientDoctor, patientNurse, insurances);
+        System.out.println("Patient: " + name + " has been added.");
         Hospital.patients.add(patient);
     }
 
@@ -404,6 +406,7 @@ public class Hospital {
                 addAppointment();
             }else if( choice.equalsIgnoreCase("t")){
                 System.out.println(Hospital.doctors);
+                System.out.println(Hospital.patients);
             }else if( choice.equalsIgnoreCase("g")){
                 showSchedule();
             }else if( choice.equalsIgnoreCase("h")){
