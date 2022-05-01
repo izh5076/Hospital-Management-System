@@ -398,7 +398,7 @@ public class Hospital {
         input = new Scanner( System.in );
         String choice;
         while(true){
-            System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit, (t)ests saved info");
+            System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit, make new (d)octor, make new (n)urse, add new (i)insurance, (t)ests saved doctors and patients");
             choice = input.nextLine();
             if(choice.equalsIgnoreCase("a")){
                 makePatient();
@@ -409,6 +409,12 @@ public class Hospital {
                 System.out.println(Hospital.patients);
             }else if( choice.equalsIgnoreCase("g")){
                 showSchedule();
+            }else if( choice.equalsIgnoreCase("d")){
+                makeDoctor();
+            }else if( choice.equalsIgnoreCase("n")){
+                makeNurse();
+            }else if( choice.equalsIgnoreCase("i")){
+                makeInsurance();
             }else if( choice.equalsIgnoreCase("h")){
                 getPatientHistory();
             }else if( choice.equalsIgnoreCase("q")){
