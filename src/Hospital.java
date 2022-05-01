@@ -30,9 +30,11 @@ public class Hospital {
      */
     public static void setupInitialInfo(Scanner input){
         input = new Scanner( System.in );
-        System.out.println("add a (d)octor, (n)urse, (i)nsurance, or (q)uit");
-        String choice = input.nextLine();
-        while(true){
+        while(true)
+        {
+            System.out.println("add a (d)octor, (n)urse, (i)nsurance, or (q)uit");
+            String choice = input.nextLine();
+
             if(choice.equalsIgnoreCase("d")){
                 makeDoctor();
             }else if(choice.equalsIgnoreCase("n")){
@@ -79,8 +81,8 @@ public class Hospital {
             System.out.println("Invalid input");
             System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
             gender = input.nextLine();
-
         }
+
         ArrayList<String> insurances = new ArrayList<>();
         System.out.println("Enter the Insurance the patient has");
         String insurance = input.nextLine();
@@ -136,6 +138,12 @@ public class Hospital {
         String name = input.nextLine();
         System.out.println("Enter Doctor gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
+        while(!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f") && !gender.equalsIgnoreCase("o"))
+        {
+            System.out.println("Invalid input");
+            System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
+            gender = input.nextLine();
+        }
 
         ArrayList<String> insurances = new ArrayList<>();
         System.out.println("Enter the Insurance the doctor takes");
@@ -164,6 +172,12 @@ public class Hospital {
         String name = input.nextLine();
         System.out.println("Enter Nurse gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
+        while(!gender.equalsIgnoreCase("m") && !gender.equalsIgnoreCase("f") && !gender.equalsIgnoreCase("o"))
+        {
+            System.out.println("Invalid input");
+            System.out.println("Enter patient gender, (m)ale, (f)emale, (o)ther");
+            gender = input.nextLine();
+        }
         Nurse nurse = new Nurse(name, gender);
     }
 
@@ -359,6 +373,5 @@ public class Hospital {
                 System.out.println("Invalid input, restart");
             }
         }
-
     }
 }
