@@ -25,7 +25,7 @@ public class Doctor extends Nurse implements InsuranceHolder
     {
         for(int i = 0; i < this.patients.size(); i++)
         {
-            if(patients.get(i).name == name)
+            if(patients.get(i).name.equals(name))
             {
                 patients.get(i).addMed(medicine);
                 break;
