@@ -342,6 +342,42 @@ public class Hospital {
      */
     public static void getPatientHistory()
     {
+        Patient patient;
+        if(patients.size()>0){
+            System.out.println("Choose the patient (enter number)");
+            for (int i = 0; i < patients.size(); i++)
+            {
+                System.out.println(i + 1 + ". " + patients.get(i).getName());
+            }
+            int patientNum = input.nextInt();
+            patient = patients.get(patientNum - 1);
+
+            System.out.println(patient.getName() + "'s Appointments are as followed: ");
+            for(int x = 0; x < patient.getChart().getAppointments().size(); x++)
+            {
+                System.out.println("Appointment Time:" + patient.getChart().getAppointment(x).
+                        getAppointmentTime() + " Appointment date: " + patient.getChart().getAppointment(x).
+                        getAppointmentDate().toString() + " ");
+            }
+
+            System.out.println(patient.getName() + "'s illnesses are as followed: ");
+            for (int j = 0; j < patient.getChart().getIllnesses().size(); j++)
+            {
+                System.out.println(patient.getChart().getIllness(j) + " ");
+            }
+
+            System.out.println(patient.getName() + "'s medicines are as follows: ");
+            for (int j = 0; j < patient.getChart().getMedicine().size(); j++)
+            {
+                System.out.println(patient.getChart().getIllness(j) + " ");
+            }
+        }else{
+            System.out.println("No patients found, make a patient and try again.");
+            return;
+        }
+
+        // old code, changed to match list/choice format
+        /*
         boolean found = true;
         Scanner scan = new Scanner(System.in);
         String patientName;
@@ -352,8 +388,9 @@ public class Hospital {
 
         for (int i = 0; i < patients.size(); i++)
         {
-            if(patients.get(i).getName() == patientName)
+            if(patients.get(i).getName().equalsIgnoreCase(patientName))
             {
+
                 System.out.println(patients.get(i).getName() + "'s Appointments are as followed: ");
                 for(int x = 0; x < patients.get(i).getChart().getAppointments().size(); x++)
                 {
@@ -382,6 +419,7 @@ public class Hospital {
         {
             System.out.println("Patient not found! ");
         }
+        */
     }
 
     /**
