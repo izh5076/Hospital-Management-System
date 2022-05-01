@@ -68,7 +68,7 @@ public class Hospital {
      *
      * @return the new Patient object
      */
-    public static Patient makePatient(){
+    public static void makePatient(){
         Scanner input = new Scanner( System.in );
         System.out.println("Enter patient name: ");
         String name = input.nextLine();
@@ -123,7 +123,6 @@ public class Hospital {
         Nurse patientNurse = nurses.get(nurseNum - 1);
         Patient patient = new Patient(name, gender, patientDoctor, patientNurse, insurances);
         Hospital.patients.add(patient);
-        return patient;
     }
 
     /**
@@ -131,7 +130,7 @@ public class Hospital {
      *
      * @return the new Doctor object
      */
-    public static Doctor makeDoctor(){
+    public static void makeDoctor(){
         Scanner input = new Scanner( System.in );
         System.out.println("Enter Doctor name: ");
         String name = input.nextLine();
@@ -152,7 +151,6 @@ public class Hospital {
         }
 
         Doctor doctor = new Doctor(name, gender, insurances);
-        return doctor;
     }
 
     /**
@@ -160,14 +158,13 @@ public class Hospital {
      *
      * @return a Nurse object
      */
-    public static Nurse makeNurse(){
+    public static void makeNurse(){
         Scanner input = new Scanner( System.in );
         System.out.println("Enter Nurse name: ");
         String name = input.nextLine();
         System.out.println("Enter Nurse gender, (m)ale, (f)emale, (o)ther");
         String gender = input.nextLine();
-
-        return new Nurse(name, gender);
+        Nurse nurse = new Nurse(name, gender);
     }
 
     /**
