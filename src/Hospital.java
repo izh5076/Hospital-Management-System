@@ -19,10 +19,10 @@ import java.util.Scanner;
  */
 public class Hospital {
     private static Schedule schedule;
-    private static ArrayList<Patient> patients;
-    private static ArrayList<Nurse> nurses;
-    private static ArrayList<Doctor> doctors;
-    private static ArrayList<String> insurances;
+    private static ArrayList<Patient> patients = new ArrayList<>();
+    private static ArrayList<Nurse> nurses = new ArrayList<>();
+    private static ArrayList<Doctor> doctors = new ArrayList<>();
+    private static ArrayList<String> insurances = new ArrayList<>();
     private static Scanner input = new Scanner( System.in );
     private static SaveData saveData;
 
@@ -331,7 +331,7 @@ public class Hospital {
 
         for (int i = 0; i < patients.size(); i++)
         {
-            if(patients.get(i).getName() == patientName)
+            if(patients.get(i).getName().equalsIgnoreCase(patientName))
             {
                 System.out.println(patients.get(i).getName() + "'s Appointments are as followed: ");
                 for(int x = 0; x < patients.get(i).getChart().getAppointments().size(); x++)
