@@ -132,23 +132,28 @@ public class Hospital {
             gender = input.nextLine();
         }
 
-        ArrayList<String> insurances = new ArrayList<>();
-        System.out.println("Enter the Insurance the patient has");
+        ArrayList<String> patientInsurances = new ArrayList<>();
+        System.out.println("Enter the Insurance the patient has (New Insurances will be added to system.)");
         String insurance = input.nextLine();
-        insurances.add(insurance);
+        patientInsurances.add(insurance);
+        if(!Hospital.insurances.contains(insurance)){
+            Hospital.insurances.add(insurance);
+        }
         while(true){
             System.out.println("Enter another Insurance option for this patient, if no more, enter \"done\".");
             insurance = input.nextLine();
             if( insurance.equalsIgnoreCase("done")){
                 break;
             }
-            insurances.add(insurance);
-
+            patientInsurances.add(insurance);
+            if(!Hospital.insurances.contains(insurance)){
+                Hospital.insurances.add(insurance);
+            }
         }
 
         ArrayList<Doctor> possibleDoctors = new ArrayList<>();
         int n = 1;
-        System.out.println("Choose the patients doctor: ");
+        System.out.println("Choose the patients doctor (type the number): ");
 
         for (int i = 0; i < insurances.size(); i++)
         {
@@ -163,7 +168,13 @@ public class Hospital {
             }
         }
         int docNum = input.nextInt();
-        Doctor patientDoctor = possibleDoctors.get(docNum - 1);
+        Doctor patientDoctor;
+        if(possibleDoctors.size()>0){
+            patientDoctor = possibleDoctors.get(docNum - 1);
+        }else{
+            System.out.println("No doctor in patient's insurance network found, please add a new doctor and try again. Patient creation cancelled.");
+            return;
+        }
 
         Nurse patientNurse;
         if(nurses.size()>0){
