@@ -24,12 +24,13 @@ public class Hospital {
     private static ArrayList<Doctor> doctors;
     private static ArrayList<String> insurances;
     private static Scanner input = new Scanner( System.in );
+    private static SaveData saveData;
 
     /**
      * runs through setting up all initial info
      */
-    public static void setupInitialInfo(Scanner input){
-        input = new Scanner( System.in );
+    public static void setupInitialInfo(){
+        Scanner input = new Scanner( System.in );
         while(true)
         {
             System.out.println("add a (d)octor, (n)urse, (i)nsurance, or (q)uit");
@@ -50,6 +51,59 @@ public class Hospital {
     }
 
     /**
+     * This will make an instance of SaveData and instantiate it, then uses output streams to write that object to "save.dat"
+     */
+    public static void saveState(){
+        try {
+            FileOutputStream fos = new FileOutputStream( "save.dat");
+            BufferedOutputStream bos = new BufferedOutputStream( fos );
+            ObjectOutputStream oos = new ObjectOutputStream( bos );
+
+            SaveData data = new SaveData( Hospital.schedule, Hospital.patients, Hospital.nurses, Hospital.doctors, Hospital.insurances );
+
+            oos.writeObject(data);
+            oos.close();
+
+            System.out.println("Data saved");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method reads the SaveData object from "save.dat" and sets the variables
+     */
+    public static void loadState(){
+        try {
+            FileInputStream fis = new FileInputStream("save.dat");
+            BufferedInputStream bis = new BufferedInputStream( fis );
+            ObjectInputStream ois = new ObjectInputStream( bis );
+
+            SaveData data = (SaveData)ois.readObject();
+
+            Hospital.schedule = data.getSchedule();
+            Hospital.patients = data.getPatients();
+            Hospital.nurses = data.getNurses();
+            Hospital.doctors = data.getDoctors();
+            Hospital.insurances = data.getInsurances();
+
+            ois.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("No save file found, defaulting to set up mode.");
+            setupInitialInfo();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
      * checks and adds a new insurance type to the list
      */
     public static void makeInsurance(){
@@ -57,11 +111,9 @@ public class Hospital {
         while(true){
             System.out.println("Enter name of Insurance.");
             String choice = input.nextLine();
-            if(choice.isEmpty() == false){
-                insurances.add(choice);
-                System.out.println("You have added Insurance: " + choice);
-                break;
-            }
+            Hospital.insurances.add(choice);
+            System.out.println("You have added Insurance: " + choice);
+            break;
         }
     }
 
@@ -116,13 +168,20 @@ public class Hospital {
         int docNum = input.nextInt();
         Doctor patientDoctor = possibleDoctors.get(docNum - 1);
 
-        System.out.println("Choose the patients nurse");
-        for (int i = 0; i < nurses.size(); i++)
-        {
-            System.out.println(i + 1 + ". " + nurses.get(i).getName());
+        Nurse patientNurse;
+        if(nurses.size()>0){
+            System.out.println("Choose the patients nurse");
+            for (int i = 0; i < nurses.size(); i++)
+            {
+                System.out.println(i + 1 + ". " + nurses.get(i).getName());
+            }
+            int nurseNum = input.nextInt();
+            patientNurse = nurses.get(nurseNum - 1);
+        }else{
+            System.out.println("No nurses found, defaulting assigned nurse to \"NoNurse\"");
+            patientNurse = new Nurse("none", "o");
         }
-        int nurseNum = input.nextInt();
-        Nurse patientNurse = nurses.get(nurseNum - 1);
+
         Patient patient = new Patient(name, gender, patientDoctor, patientNurse, insurances);
         Hospital.patients.add(patient);
     }
@@ -310,69 +369,43 @@ public class Hospital {
      */
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner( System.in );
-        boolean resume;
         while(true){
             System.out.println("Do you want to resume where you left off, if you ran this before? 'y' for yes, 'n' for no or haven't run before.");
             String s = input.nextLine();
             if(s.equalsIgnoreCase("y")){
-                resume = true;
+                loadState();
                 break;
             }else if (s.equalsIgnoreCase("n")){
-                resume = false;
+                setupInitialInfo();
                 break;
             }else{
                 System.out.println("Bad entry.");
             }
         }
 
-        // Opens save file, will copy inputs to be entered upon reloading
-        BufferedWriter writer = new BufferedWriter( new FileWriter("save.txt"));
-
-
-        // if you want to resume, it changes source to save file
-        if(resume){
-            input = new Scanner("save.txt");
-        }
-
-        boolean firstRun = true;
-
         // Break into action options
         input = new Scanner( System.in );
         String choice;
         while(true){
-            if(resume){
-                if(firstRun){
-                    setupInitialInfo(input);
-                    firstRun = false;
-                }
-                if(input.hasNext() == false){
-                    input = new Scanner( System.in );
-                    resume = false;
-                }
-            }
-            System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit");
+            System.out.println("Would you like to (a)dd a patient, (s)chedule an appointment, (g)et upcoming schedule, get patient (h)istory, save and (q)uit, (t)ests saved info");
             choice = input.nextLine();
             if(choice.equalsIgnoreCase("a")){
-                writer.append("\n"+choice);
                 makePatient();
             }else if( choice.equalsIgnoreCase("s")){
-                writer.append("\n"+choice);
                 addAppointment();
+            }else if( choice.equalsIgnoreCase("t")){
+                System.out.println(Hospital.doctors);
             }else if( choice.equalsIgnoreCase("g")){
-                writer.append("\n"+choice);
                 showSchedule();
             }else if( choice.equalsIgnoreCase("h")){
-                writer.append("\n"+choice);
                 getPatientHistory();
             }else if( choice.equalsIgnoreCase("q")){
-
-                writer.append("\n"+choice);
-                System.out.println(writer);
-                //saveState();
+                saveState();
                 break;
             }else{
                 System.out.println("Invalid input, restart");
             }
         }
+        System.out.println("Thank you for using our Hospital Management System");
     }
 }
