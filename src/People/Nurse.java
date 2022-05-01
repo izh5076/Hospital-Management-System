@@ -80,4 +80,12 @@ public class Nurse extends Person
     {
         return this.patients;
     }
+
+    @Override
+    public String toString() {
+        return "Nurse{ " +
+                name +
+                ", " + gender +
+                " }";
+    }
 }
