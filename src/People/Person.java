@@ -1,5 +1,7 @@
 package People;
 
+import java.io.Serializable;
+
 /**
  * Person.java:
  * this is an abstract class holding basic information for people
@@ -7,7 +9,7 @@ package People;
  * @author Christopher Brennen
  * @author Issac Heim
  */
-public abstract class Person
+public abstract class Person implements Serializable
 {
     //instance variables
     protected String name;

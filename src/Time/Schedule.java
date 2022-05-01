@@ -2,6 +2,7 @@ package Time;
 
 import Time.Appointment.Appointment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @author Christopher Brennen
  * @author Issac Heim
  */
-public class Schedule {
+public class Schedule implements Serializable {
     ArrayList<Appointment> schedule = new ArrayList<Appointment>();
 
     public Schedule(){}

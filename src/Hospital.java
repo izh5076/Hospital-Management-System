@@ -18,7 +18,7 @@ import java.util.Scanner;
  * @author Issac Heim
  */
 public class Hospital {
-    private static Schedule schedule;
+    private static Schedule schedule = new Schedule();
     private static ArrayList<Patient> patients = new ArrayList<>();
     private static ArrayList<Nurse> nurses = new ArrayList<>();
     private static ArrayList<Doctor> doctors = new ArrayList<>();
@@ -55,7 +55,7 @@ public class Hospital {
      */
     public static void saveState(){
         try {
-            FileOutputStream fos = new FileOutputStream( "save.dat");
+            FileOutputStream fos = new FileOutputStream( "resources/save.dat");
             BufferedOutputStream bos = new BufferedOutputStream( fos );
             ObjectOutputStream oos = new ObjectOutputStream( bos );
 
@@ -75,7 +75,7 @@ public class Hospital {
      */
     public static void loadState(){
         try {
-            FileInputStream fis = new FileInputStream("save.dat");
+            FileInputStream fis = new FileInputStream("resources/save.dat");
             BufferedInputStream bis = new BufferedInputStream( fis );
             ObjectInputStream ois = new ObjectInputStream( bis );
 
@@ -201,20 +201,28 @@ public class Hospital {
             gender = input.nextLine();
         }
 
-        ArrayList<String> insurances = new ArrayList<>();
-        System.out.println("Enter the Insurance the doctor takes");
+        ArrayList<String> doctorInsurances = new ArrayList<>();
+        System.out.println("Enter the Insurance the doctor takes (Insurance will be added to system if not already)");
         String insurance = input.nextLine();
-        insurances.add(insurance);
+        doctorInsurances.add(insurance);
+        if(!insurances.contains(insurance)){
+            insurances.add(insurance);
+        }
         while(true){
             System.out.println("Enter another Insurance option for this doctor, if no more, enter \"done\".");
             insurance = input.nextLine();
             if( insurance.equalsIgnoreCase("done")){
                 break;
             }
-            insurances.add(insurance);
+            if(!doctorInsurances.contains(insurance)){
+                doctorInsurances.add(insurance);
+            }
+            if(!insurances.contains(insurance)){
+                insurances.add(insurance);
+            }
         }
 
-        Doctor doctor = new Doctor(name, gender, insurances);
+        Doctor doctor = new Doctor(name, gender, doctorInsurances);
         System.out.println(doctor);
         doctors.add(doctor);
     }
@@ -331,7 +339,7 @@ public class Hospital {
 
         for (int i = 0; i < patients.size(); i++)
         {
-            if(patients.get(i).getName().equalsIgnoreCase(patientName))
+            if(patients.get(i).getName() == patientName)
             {
                 System.out.println(patients.get(i).getName() + "'s Appointments are as followed: ");
                 for(int x = 0; x < patients.get(i).getChart().getAppointments().size(); x++)
