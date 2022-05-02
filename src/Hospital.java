@@ -437,51 +437,6 @@ public class Hospital {
             System.out.println("No patients found, make a patient and try again.");
             return;
         }
-
-        // old code, changed to match list/choice format
-        /*
-        boolean found = true;
-        Scanner scan = new Scanner(System.in);
-        String patientName;
-
-
-        System.out.println("Enter patient name to get the patient history: ");
-        patientName = scan.nextLine();
-
-        for (int i = 0; i < patients.size(); i++)
-        {
-            if(patients.get(i).getName().equalsIgnoreCase(patientName))
-            {
-
-                System.out.println(patients.get(i).getName() + "'s Appointments are as followed: ");
-                for(int x = 0; x < patients.get(i).getChart().getAppointments().size(); x++)
-                {
-                    System.out.println("Appointment Time:" + patients.get(i).getChart().getAppointment(x).
-                            getAppointmentTime() + " Appointment date: " + patients.get(i).getChart().getAppointment(x).
-                        getAppointmentDate().toString() + " ");
-                }
-
-                System.out.println(patients.get(i).getName() + "'s illnesses are as followed: ");
-                for (int j = 0; j < patients.get(i).getChart().getIllnesses().size(); j++)
-                {
-                    System.out.println(patients.get(i).getChart().getIllness(j) + " ");
-                }
-
-                System.out.println(patients.get(i).getName() + "'s medicines are as follows: ");
-                for (int j = 0; j < patients.get(i).getChart().getMedicine().size(); j++)
-                {
-                    System.out.println(patients.get(i).getChart().getIllness(j) + " ");
-                }
-                found = true;
-                break;
-            }
-            found = false;
-        }
-        if(!found)
-        {
-            System.out.println("Patient not found! ");
-        }
-        */
     }
 
     /**
