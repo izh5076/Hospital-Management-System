@@ -134,7 +134,7 @@ public class Appointment implements Serializable
      */
     public boolean validateDate(int year, int month, int day)
     {
-        if(year < currentDate.getYear() || month > 12 || month <= 0 || day <= 0 || day > 31)
+        if(year < currentDate.getYear() || month > 12 || month <= 0 || day <= 0 || day > 31 || ( (month == 2) && (day > 28)) || ( ((month==4) || (month==6) || (month==9) || (month==11)) && (day>30)) )
         {
             return false;
         }
