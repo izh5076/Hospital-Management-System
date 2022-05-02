@@ -369,17 +369,6 @@ public class Hospital {
 
     public static void makePatientHistory( int patientNum )
     {
-        /*
-        System.out.println("Choose a patient to create a chart for: ");
-        for (int i = 0; i < patients.size(); i++)
-        {
-            System.out.println( i + 1 + patients.get(i).getName());
-        }
-        input = new Scanner( System.in );
-        int patientNum = input.nextInt();
-        patientNum--;
-         */
-        //Patient currentPatient = patients.get(patientNum);
         ArrayList<String> currentIllnesses = new ArrayList<>();
         ArrayList<String> currentMedicines = new ArrayList<>();
         ArrayList<Appointment> currentAppointments = new ArrayList<>(); ;
@@ -408,36 +397,6 @@ public class Hospital {
             }
         }
         patients.get(patientNum).getChart().setMedicine(currentMedicines);
-
-        // i think the appointment history is more of a running tally than an instantiated thing
-        /*
-        while(true){
-            System.out.println("Enter Appointment day: ");
-            input.nextLine();
-            int day = input.nextInt();
-
-            System.out.println("Enter Appointment month: ");
-            int month = input.nextInt();
-
-            System.out.println("Enter Appointment year: ");
-            int year = input.nextInt();
-
-            System.out.println("Enter Appointment starting time: ");
-            int time = input.nextInt();
-            try
-            {
-                Appointment a = new Appointment(day, month, year, time, patients.get(patientNum));
-                currentAppointments.add(a);
-            }
-            catch (InvalidDateException e)
-            {
-                System.err.println(e);
-            }
-            break;
-        }
-        patients.get(patientNum).getChart().setAppointments(currentAppointments);
-
-         */
     }
 
     /**
