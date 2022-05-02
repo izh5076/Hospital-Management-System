@@ -8,8 +8,6 @@ import Time.Schedule;
 import Time.TimeSlotFilledException;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -530,15 +528,19 @@ public class Hospital {
      * will choose the patient and output their info
      */
     public static void getPatientInfo(){
-        if(patients.size()>0){
+        if(patients.size()>0)
+        {
             System.out.println("Choose the patient (enter number)");
             for (int i = 0; i < patients.size(); i++)
             {
                 System.out.println(i + 1 + ". " + patients.get(i).getName());
             }
             int patientNum = input.nextInt();
+            patientNum--;
             System.out.println(patients.get(patientNum).toString());
-        }else{
+        }
+        else
+        {
             System.out.println("No patients found, make a patient and try again.");
             return;
         }
