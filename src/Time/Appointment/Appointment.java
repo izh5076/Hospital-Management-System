@@ -1,12 +1,10 @@
 package Time.Appointment;
 
-import People.Doctor;
 import People.Patient.Patient;
 import Time.MonthDays;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 

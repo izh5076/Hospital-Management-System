@@ -117,8 +117,6 @@ public class Hospital {
 
     /**
      * Makes up a new Patient object
-     *
-     * @return the new Patient object
      */
     public static void makePatient(){
         Scanner input = new Scanner( System.in );
@@ -219,8 +217,6 @@ public class Hospital {
 
     /**
      * goes through making a Doctor object
-     *
-     * @return the new Doctor object
      */
     public static void makeDoctor(){
         Scanner input = new Scanner( System.in );
@@ -263,8 +259,6 @@ public class Hospital {
 
     /**
      * runs through the steps of making a Nurse object
-     *
-     * @return a Nurse object
      */
     public static void makeNurse(){
         Scanner input = new Scanner( System.in );
