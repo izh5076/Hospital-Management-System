@@ -85,6 +85,7 @@ public class Appointment implements Serializable
         {
             this.date = new Date(year, month, day);
             this.startTime = time1;
+            this.date.setHours(time1);
             this.patient = patient;
         }
     }
@@ -120,7 +121,7 @@ public class Appointment implements Serializable
         else
         {
             this.startTime = time1;
-
+            date.setTime(time1);
         }
     }
 
@@ -184,7 +185,7 @@ public class Appointment implements Serializable
         return "Appointment{" +
                 " patient: " + patient +
                 ", date: " + date +
-                ", time: " + startTime +
+        //        ", time: " + startTime +
                 ", length: " + duration +
                 " }";
     }
