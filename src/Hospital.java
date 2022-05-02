@@ -6,7 +6,6 @@ import Time.Appointment.InvalidDateException;
 import Time.MonthDays;
 import Time.Schedule;
 import Time.TimeSlotFilledException;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -326,7 +325,7 @@ public class Hospital {
 
             System.out.println("What time would you like your appointment to be? Open 9-17, military time. (enter integer).");
             startTime = scan.nextInt();
-
+            month--;
             try
             {
                 a = new Appointment(day, month, year, startTime, schedulingPatient);
