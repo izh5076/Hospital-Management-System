@@ -1,9 +1,12 @@
 package Time.Appointment;
 
+import People.Doctor;
 import People.Patient.Patient;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -22,7 +25,8 @@ public class Appointment implements Serializable
     private Date date;
     private int startTime;
     private Patient patient;
-    private LocalDate current = LocalDate.now();
+    private LocalDate currentDate = LocalDate.now();
+    private LocalTime currentTime = LocalTime.now();
 
     //all appointments last 30 minutes, or 0.5 hours.
     private final String duration = "45 minutes";
@@ -129,7 +133,7 @@ public class Appointment implements Serializable
      */
     public boolean validateDate(int year, int month, int day)
     {
-        if(year < current.getYear() || month > 12 || month <= 0 || day <= 0 || day > 31)
+        if(year < currentDate.getYear() || month > 12 || month <= 0 || day <= 0 || day > 31)
         {
             return false;
         }
@@ -184,4 +188,5 @@ public class Appointment implements Serializable
                 ", length: " + duration +
                 " }";
     }
+
 }

@@ -7,6 +7,7 @@ import Time.Schedule;
 import Time.TimeSlotFilledException;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -338,8 +339,66 @@ public class Hospital {
         schedule.displaySchedule();
     }
 
-    public static void makePatientHistory(){
+    public static void makePatientHistory()
+    {
+        System.out.println("Choose a patient to create a chart for: ");
+        for (int i = 0; i < patients.size(); i++)
+        {
+            System.out.println( i + 1 + patients.get(i).getName());
+        }
+        input = new Scanner( System.in );
+        int patientNum = input.nextInt();
+        patientNum--;
+        Patient currentPatient = patients.get(patientNum);
+        ArrayList<String> currentIllnesses = new ArrayList<>();
+        ArrayList<String> currentMedicines = new ArrayList<>();
+        ArrayList<Appointment> currentAppointments = new ArrayList<>(); ;
+        while(true){
+            System.out.println("Enter patient's illnesses one by one (if done, enter \"done\")");
+            String illness = input.nextLine();
+            if(illness.equalsIgnoreCase("done"))
+            {
+                break;
+            }
+            currentIllnesses.add(illness);
+        }
+        patients.get(patientNum).getChart().setIllnesses(currentIllnesses);
 
+        while(true){
+            System.out.println("Enter patient's medicines one by one.");
+            String med = input.nextLine();
+            if(med.equalsIgnoreCase("done"))
+            {
+                break;
+            }
+            currentMedicines.add(med);
+        }
+        patients.get(patientNum).getChart().setMedicine(currentMedicines);
+        while(true){
+            System.out.println("Enter Appointment day: ");
+            input.nextLine();
+            int day = input.nextInt();
+
+            System.out.println("Enter Appointment month: ");
+            int month = input.nextInt();
+
+            System.out.println("Enter Appointment year: ");
+            int year = input.nextInt();
+
+            System.out.println("Enter Appointment starting time: ");
+            int time = input.nextInt();
+            try
+            {
+                Appointment a = new Appointment(day, month, year, time, patients.get(patientNum));
+                currentAppointments.add(a);
+            }
+            catch (InvalidDateException e)
+            {
+                System.err.println(e);
+            }
+            break;
+        }
+        patients.get(patientNum).getChart().setAppointments(currentAppointments);
     }
 
     /**

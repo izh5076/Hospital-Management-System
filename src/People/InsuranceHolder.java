@@ -10,6 +10,6 @@ import java.util.ArrayList;
  * @author Issac Heim
  */
 public interface InsuranceHolder {
-    public void setInsuranceType( ArrayList<String> type );
-    public ArrayList<String> getInsuranceType();
+     void setInsuranceType( ArrayList<String> type );
+     ArrayList<String> getInsuranceType();
 }

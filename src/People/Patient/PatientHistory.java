@@ -50,6 +50,20 @@ public class PatientHistory implements Serializable
         this.illnesses.add(newIllness);
     }
 
+    public void setIllnesses(ArrayList<String> illnesses)
+    {
+        this.illnesses = illnesses;
+    }
+
+    public void setMedicine(ArrayList<String> medicines)
+    {
+        this.medicine = medicines;
+    }
+
+    public void setAppointments(ArrayList<Appointment> appointments)
+    {
+        this.appointments = appointments;
+    }
     /**
      * Mutator to add a new medicine to the ArrayList of patient Medicines
      *
