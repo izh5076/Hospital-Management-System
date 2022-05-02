@@ -570,8 +570,8 @@ public class Hospital {
         String choice;
         while(true){
             System.out.println("\nWould you like to (enter number): \n1. add a patient, \n2. schedule an appointment, " +
-                    "\n3. get upcoming schedule, \n4. get patient history, \n5. get patient info \n9. save and quit, \n6. make new doctor, " +
-                    "\n7. make new nurse, \n8. add new insurance, \n10. test data");
+                    "\n3. get upcoming schedule, \n4. get patient history, \n5. get patient info, \n6. make new doctor, " +
+                    "\n7. make new nurse, \n8. add new insurance, \n9. save and quit, \n10. test data");
             choice = input.nextLine();
             if(choice.equalsIgnoreCase("1")){
                 makePatient();
