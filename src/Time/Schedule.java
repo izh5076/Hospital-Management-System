@@ -63,4 +63,13 @@ public class Schedule implements Serializable {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        String out =  "Schedule{ ";
+        for (Appointment a: schedule) {
+            out+= a.toString() + "; ";
+        }
+        return out+=" }";
+    }
 }

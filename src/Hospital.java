@@ -134,7 +134,7 @@ public class Hospital {
         }
 
         ArrayList<String> patientInsurances = new ArrayList<>();
-        System.out.println("Enter the Insurance the patient has (New Insurances will be added to system.)");
+        System.out.println("Enter the Insurance the patient has.");
         String insurance = input.nextLine();
         patientInsurances.add(insurance);
         if(!Hospital.insurances.contains(insurance)){
@@ -154,13 +154,28 @@ public class Hospital {
 
         ArrayList<Doctor> possibleDoctors = new ArrayList<>();
         int n = 1;
-        System.out.println("Choose the patients doctor (type the number, if empty, enter 1): ");
+        System.out.println("Choose the patients doctor(enter number): ");
 
-        for (int i = 0; i < Hospital.insurances.size(); i++)
+        for (Doctor d : Hospital.doctors) {
+            for (String ins : d.getInsuranceType()){
+                if(patientInsurances.contains(ins)){
+                    if(!possibleDoctors.contains(d)){
+                        possibleDoctors.add(d);
+                        System.out.println(n + ". " + d.getName());
+                        n++;
+                    }
+                }
+            }
+
+        }
+
+        // replaced loop with above, should be far cleaner and the other one wasn't sorting by insurance right i dont think
+        /*
+        for (int i = 0; i < patientInsurances.size(); i++)
         {
             for (int j = 0; j < doctors.size(); j++)
             {
-                if(doctors.get(j).getInsuranceType().equals(Hospital.insurances.get(i)))
+                if(doctors.get(j).getInsuranceType().contains(patientInsurances.get(i)))
                 {
                     possibleDoctors.add(doctors.get(j));
                     System.out.println(n + ". " + doctors.get(j).getName());
@@ -168,9 +183,11 @@ public class Hospital {
                 }
             }
         }
+         */
+
         Doctor patientDoctor;
         if(!(possibleDoctors.size() >0)){
-            System.out.println("No doctor in patient's insurance network found, please add a new doctor and try again. Patient creation cancelled.");
+            System.out.println("The patient's insurance has no supported doctors in the system, patient cannot currently be registered. Patient creation cancelled.");
             return;
 
         }else{
@@ -180,7 +197,7 @@ public class Hospital {
 
         Nurse patientNurse;
         if(nurses.size()>0){
-            System.out.println("Choose the patients nurse");
+            System.out.println("Choose the patients nurse (enter number)");
             for (int i = 0; i < nurses.size(); i++)
             {
                 System.out.println(i + 1 + ". " + nurses.get(i).getName());
@@ -194,8 +211,10 @@ public class Hospital {
         }
 
         Patient patient = new Patient(name, gender, patientDoctor, patientNurse, patientInsurances);
-        System.out.println("Patient: " + name + " has been added.");
         Hospital.patients.add(patient);
+        makePatientHistory( Hospital.patients.size()-1);
+        System.out.println("Patient: " + name + " has been registered.");
+
     }
 
     /**
@@ -314,11 +333,7 @@ public class Hospital {
                 schedulingPatient.getChart().addAppointment(a);
                 break;
             }
-            catch (InvalidDateException e)
-            {
-                System.err.println(e);
-            }
-            catch (TimeSlotFilledException e)
+            catch (InvalidDateException | TimeSlotFilledException e)
             {
                 System.err.println(e);
             }
@@ -339,8 +354,9 @@ public class Hospital {
         schedule.displaySchedule();
     }
 
-    public static void makePatientHistory()
+    public static void makePatientHistory( int patientNum )
     {
+        /*
         System.out.println("Choose a patient to create a chart for: ");
         for (int i = 0; i < patients.size(); i++)
         {
@@ -349,7 +365,8 @@ public class Hospital {
         input = new Scanner( System.in );
         int patientNum = input.nextInt();
         patientNum--;
-        Patient currentPatient = patients.get(patientNum);
+         */
+        //Patient currentPatient = patients.get(patientNum);
         ArrayList<String> currentIllnesses = new ArrayList<>();
         ArrayList<String> currentMedicines = new ArrayList<>();
         ArrayList<Appointment> currentAppointments = new ArrayList<>(); ;
@@ -365,15 +382,20 @@ public class Hospital {
         patients.get(patientNum).getChart().setIllnesses(currentIllnesses);
 
         while(true){
-            System.out.println("Enter patient's medicines one by one.");
+            System.out.println("Enter patient's medications one by one, or \"done\".");
             String med = input.nextLine();
             if(med.equalsIgnoreCase("done"))
             {
                 break;
             }
-            currentMedicines.add(med);
+            if(!currentMedicines.contains(med)){
+                currentMedicines.add(med);
+            }
         }
         patients.get(patientNum).getChart().setMedicine(currentMedicines);
+
+        // i think the appointment history is more of a running tally than an instantiated thing
+        /*
         while(true){
             System.out.println("Enter Appointment day: ");
             input.nextLine();
@@ -399,6 +421,8 @@ public class Hospital {
             break;
         }
         patients.get(patientNum).getChart().setAppointments(currentAppointments);
+
+         */
     }
 
     /**
@@ -491,7 +515,7 @@ public class Hospital {
      *
      * @param args
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner input = new Scanner( System.in );
         while(true){
             System.out.println("Do you want to resume where you left off, if you ran this before? 'y' for yes, 'n' for no or haven't run before.");
@@ -513,7 +537,7 @@ public class Hospital {
         while(true){
             System.out.println("\nWould you like to: \nadd a (p)atient, \n(s)chedule an appointment, " +
                     "\n(g)et upcoming schedule, \nget patient (h)istory, \nsave and (q)uit, \nmake new (d)octor, " +
-                    "\nmake new (n)urse, \nadd new (i)nsurance, \n(t)ests saved doctors and patients");
+                    "\nmake new (n)urse, \nadd new (i)nsurance, \n(t)est data");
             choice = input.nextLine();
             if(choice.equalsIgnoreCase("p")){
                 makePatient();
@@ -522,6 +546,9 @@ public class Hospital {
             }else if( choice.equalsIgnoreCase("t")){
                 System.out.println(Hospital.doctors);
                 System.out.println(Hospital.patients);
+                System.out.println(Hospital.insurances);
+                System.out.println(Hospital.nurses);
+                System.out.println(Hospital.schedule);
             }else if( choice.equalsIgnoreCase("g")){
                 showSchedule();
             }else if( choice.equalsIgnoreCase("d")){
