@@ -30,7 +30,7 @@ public class InvalidDateException extends Exception
      */
     public InvalidDateException(int year, int month, int day)
     {
-        super(day + "/" + month + "/" + year + "does not exist, or is outside of operating dates");
+        super(month + "/" + day  + "/" + year + " does not exist, or is outside of operating dates");
     }
 
 

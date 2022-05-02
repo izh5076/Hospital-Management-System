@@ -383,14 +383,16 @@ public class Hospital {
         ArrayList<String> currentIllnesses = new ArrayList<>();
         ArrayList<String> currentMedicines = new ArrayList<>();
         ArrayList<Appointment> currentAppointments = new ArrayList<>(); ;
-        while(true){
+        while(true) {
             System.out.println("Enter patient's illnesses one by one (if done, enter \"done\")");
             String illness = input.nextLine();
-            if(illness.equalsIgnoreCase("done"))
-            {
+            if (illness.equalsIgnoreCase("done")) {
                 break;
             }
-            currentIllnesses.add(illness);
+            if (!currentIllnesses.contains(illness))
+            {
+                currentIllnesses.add(illness);
+            }
         }
         patients.get(patientNum).getChart().setIllnesses(currentIllnesses);
 
