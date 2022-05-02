@@ -178,10 +178,10 @@ public class Appointment implements Serializable
     @Override
     public String toString() {
         return "Appointment{" +
-                ", patient=" + patient +
-                "date=" + date +
-                ", startTime=" + startTime +
-                ", duration=" + duration +
-                '}';
+                " patient: " + patient +
+                ", date: " + date +
+                ", time: " + startTime +
+                ", length: " + duration +
+                " }";
     }
 }

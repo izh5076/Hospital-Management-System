@@ -51,15 +51,15 @@ public class Schedule implements Serializable {
      * prints the schedule to output stream
      */
     public void displaySchedule(){
-        System.out.println("The schedule is as follows:");
+        System.out.print("The schedule is as follows:");
         if(schedule.equals(null))
         {
-            System.out.println("No current schedule available");
+            System.out.println("\nNo current schedule available");
         }
         else
         {
             for (Appointment a : schedule) {
-                System.out.println(a.toString());
+                System.out.println("\n" + a.toString());
             }
         }
     }

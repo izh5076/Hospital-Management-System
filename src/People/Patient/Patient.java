@@ -119,10 +119,10 @@ public class Patient extends Person implements InsuranceHolder
 
     @Override
     public String toString() {
-        return "Patient{" + this.getName() +
-                "insured by: " + insuranceType +
-                ", assigned Doctor: " + patientDoctor +
-                ", assigned Nurse: " + patientNurse +
-                '}';
+        return "Patient{ " + this.getName() +
+                ", Insured by: " + insuranceType +
+                ", " + patientDoctor +
+                ", " + patientNurse +
+                " }";
     }
 }
