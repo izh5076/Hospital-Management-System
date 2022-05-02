@@ -37,13 +37,4 @@ public class MonthDays {
     public static Integer getDays( int month ){
         return table.get(month);
     }
-
-    /**
-     * quick testing main
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        System.out.println(MonthDays.getDays(4));
-    }
 }

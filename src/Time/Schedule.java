@@ -42,6 +42,7 @@ public class Schedule implements Serializable {
             while( apt.getAppointmentTime() > schedule.get(i).getAppointmentTime() ) {
                 i++;
             }
+            System.out.println("schedule.add is trying index : " + i);
             schedule.add( i, apt );
         }
 
@@ -68,8 +69,8 @@ public class Schedule implements Serializable {
     public String toString() {
         String out =  "Schedule{ ";
         for (Appointment a: schedule) {
-            out+= a.toString() + "; ";
+            out+= ";\n     " + a.toString();
         }
-        return out+=" }";
+        return out;
     }
 }

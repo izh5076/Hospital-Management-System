@@ -3,12 +3,15 @@ import People.Nurse;
 import People.Patient.Patient;
 import Time.Appointment.Appointment;
 import Time.Appointment.InvalidDateException;
+import Time.MonthDays;
 import Time.Schedule;
 import Time.TimeSlotFilledException;
 
 import java.io.*;
 import java.lang.reflect.Array;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -20,7 +23,7 @@ import java.util.Scanner;
  */
 public class Hospital {
     private static Schedule schedule = new Schedule();
-    private static ArrayList<Patient> patients = new ArrayList<>();
+    private static ArrayList<Patient> patients = new ArrayList<>() ;
     private static ArrayList<Nurse> nurses = new ArrayList<>();
     private static ArrayList<Doctor> doctors = new ArrayList<>();
     private static ArrayList<String> insurances = new ArrayList<>();
@@ -292,14 +295,14 @@ public class Hospital {
 
         Scanner in = new Scanner( System.in );
         System.out.println("Choose the patient you are scheduling an appointment for (enter number)");
-        for (int i = 0; i < patients.size(); i++) {
-            System.out.println(i+1 + ": " + patients.get(i).getName());
+        for (int i = 1; i <= patients.size(); i++) {
+            System.out.println(i + ": " + patients.get(i-1).getName());
         }
         int p;
         Patient schedulingPatient;
         while(true){
             p = in.nextInt();
-            if((p < 0) || (p > patients.size()-1) ){
+            if((p < 1) || (p > patients.size())){
                 System.out.println("Bad entry, try again.");
             }
             else{
@@ -339,10 +342,23 @@ public class Hospital {
             }
         }
 
+        // Follow-up Dates
         System.out.println("You have added an appointment: " + a);
         System.out.println("Some follow up dates for the patient's next appointment would be: ");
-        for (int i = 0; i < 5; i++) {
-
+        for (int i = 1; i < 5; i++) {
+            int nextDay = day + 1 + 7*i;
+            int nextMonth = month;
+            int nextYear = year;
+            int daysInMonth = MonthDays.getDays(month);
+            if(nextDay > daysInMonth){
+                nextMonth++;
+                nextDay = nextDay-MonthDays.getDays(month);
+                if((nextMonth) > 12){
+                    nextMonth = 1;
+                    nextYear++;
+                }
+            }
+            System.out.println("     " + i + " week(s) after: " + new Date(nextYear-1900, nextMonth, nextDay, startTime, 0) );
         }
     }
 

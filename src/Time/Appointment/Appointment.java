@@ -87,6 +87,7 @@ public class Appointment implements Serializable
             this.date = new Date(year, month, day);
             this.startTime = time1;
             this.date.setHours(time1);
+            this.date.setYear(year-1900);
             this.patient = patient;
         }
     }
@@ -137,6 +138,10 @@ public class Appointment implements Serializable
     {
         if(year < currentDate.getYear() || month > 12 || month <= 0 || day <= 0 || day > 31 || (day > MonthDays.getDays(month)) )
         {
+            return false;
+        }
+        Date temp = new Date(year, month, day);
+        if(temp.getDay() == 0 || temp.getDay() == 6){
             return false;
         }
         return true;
