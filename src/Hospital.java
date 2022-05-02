@@ -527,6 +527,24 @@ public class Hospital {
     }
 
     /**
+     * will choose the patient and output their info
+     */
+    public static void getPatientInfo(){
+        if(patients.size()>0){
+            System.out.println("Choose the patient (enter number)");
+            for (int i = 0; i < patients.size(); i++)
+            {
+                System.out.println(i + 1 + ". " + patients.get(i).getName());
+            }
+            int patientNum = input.nextInt();
+            System.out.println(patients.get(patientNum).toString());
+        }else{
+            System.out.println("No patients found, make a patient and try again.");
+            return;
+        }
+    }
+
+    /**
      * Main will handle branching to method-encapsulated logic
      *
      * @param args
@@ -551,31 +569,33 @@ public class Hospital {
         input = new Scanner( System.in );
         String choice;
         while(true){
-            System.out.println("\nWould you like to: \nadd a (p)atient, \n(s)chedule an appointment, " +
-                    "\n(g)et upcoming schedule, \nget patient (h)istory, \nsave and (q)uit, \nmake new (d)octor, " +
-                    "\nmake new (n)urse, \nadd new (i)nsurance, \n(t)est data");
+            System.out.println("\nWould you like to (enter number): \n1. add a patient, \n2. schedule an appointment, " +
+                    "\n3. get upcoming schedule, \n4. get patient history, \n5. get patient info \n9. save and quit, \n6. make new doctor, " +
+                    "\n7. make new nurse, \n8. add new insurance, \n10. test data");
             choice = input.nextLine();
-            if(choice.equalsIgnoreCase("p")){
+            if(choice.equalsIgnoreCase("1")){
                 makePatient();
-            }else if( choice.equalsIgnoreCase("s")){
+            }else if( choice.equalsIgnoreCase("2")){
                 addAppointment();
-            }else if( choice.equalsIgnoreCase("t")){
+            }else if( choice.equalsIgnoreCase("10")){
                 System.out.println(Hospital.doctors);
                 System.out.println(Hospital.patients);
                 System.out.println(Hospital.insurances);
                 System.out.println(Hospital.nurses);
                 System.out.println(Hospital.schedule);
-            }else if( choice.equalsIgnoreCase("g")){
+            }else if( choice.equalsIgnoreCase("3")){
                 showSchedule();
-            }else if( choice.equalsIgnoreCase("d")){
+            }else if( choice.equalsIgnoreCase("6")){
                 makeDoctor();
-            }else if( choice.equalsIgnoreCase("n")){
+            }else if( choice.equalsIgnoreCase("7")){
                 makeNurse();
-            }else if( choice.equalsIgnoreCase("i")){
+            }else if( choice.equalsIgnoreCase("8")){
                 makeInsurance();
-            }else if( choice.equalsIgnoreCase("h")){
+            }else if( choice.equalsIgnoreCase("4")){
                 getPatientHistory();
-            }else if( choice.equalsIgnoreCase("q")){
+            }else if( choice.equalsIgnoreCase("5")){
+                getPatientInfo();
+            }else if( choice.equalsIgnoreCase("9")){
                 saveState();
                 break;
             }else{
