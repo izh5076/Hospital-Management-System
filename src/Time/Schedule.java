@@ -4,6 +4,7 @@ import Time.Appointment.Appointment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * Schedule.java:
@@ -30,22 +31,8 @@ public class Schedule implements Serializable {
             }
         }
 
-        // This bit should sort the new appointment into chronological order in the schedule
-        // This assumes that compareTo works for Date objects like I think they do, positive being after the compared date
-        if(schedule.isEmpty()){
-            schedule.add(apt);
-        }else{
-            int i = 0;
-            while( apt.getAppointmentDate().compareTo( schedule.get(i).getAppointmentDate() ) > 0 ){
-                i++;
-            }
-            while( apt.getAppointmentTime() > schedule.get(i).getAppointmentTime() ) {
-                i++;
-            }
-            System.out.println("schedule.add is trying index : " + i);
-            schedule.add( i, apt );
-        }
-
+        schedule.add(apt);
+        schedule.sort(Comparator.comparing(Appointment::getAppointmentDate));
     }
 
     /**
